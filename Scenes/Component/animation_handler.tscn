@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsad3dcuvs8gi"]
+
+[ext_resource type="Script" uid="uid://byys2je4n2rx7" path="res://Scripts/Components/animation_handler.gd" id="1_fedgj"]
+
+[node name="AnimationHandler" type="Node"]
+script = ExtResource("1_fedgj")

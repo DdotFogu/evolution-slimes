@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch55c0koeb6f0"]
+
+[ext_resource type="Script" uid="uid://dk8als7vpa813" path="res://Scenes/Characters/Slimes/vision_component.gd" id="1_3eku2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3eku2"]
+radius = 0.01
+
+[node name="VisionComponent" type="Node2D"]
+script = ExtResource("1_3eku2")
+searchable_items = 4
+
+[node name="VisionNode" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="Range" type="CollisionShape2D" parent="VisionNode"]
+shape = SubResource("CircleShape2D_3eku2")

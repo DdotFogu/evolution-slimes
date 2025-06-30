@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://blk63cjmabhf5"]
+
+[ext_resource type="Script" uid="uid://fow641oc4s1c" path="res://Scripts/Components/state_machine.gd" id="1_qk3pv"]
+[ext_resource type="Script" uid="uid://hki0ialygjch" path="res://Scripts/Components/States/idle.gd" id="2_47g2b"]
+
+[node name="State Machine" type="Node"]
+script = ExtResource("1_qk3pv")
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource("2_47g2b")
+metadata/_custom_type_script = "uid://d037sd1151ck3"

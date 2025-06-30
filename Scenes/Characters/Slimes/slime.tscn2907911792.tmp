@@ -1,0 +1,135 @@
+[gd_scene load_steps=18 format=3 uid="uid://cliqmeglrrpb8"]
+
+[ext_resource type="Script" uid="uid://bamnaw52w1k70" path="res://Scripts/Classes/Character Base.gd" id="1_l4h3r"]
+[ext_resource type="Texture2D" uid="uid://4hns6hp7ejur" path="res://Assets/Sprites/Slimes/Slime.png" id="1_wsajx"]
+[ext_resource type="Script" uid="uid://fow641oc4s1c" path="res://Scripts/Components/state_machine.gd" id="2_j4tfl"]
+[ext_resource type="Script" uid="uid://d2ymegg2fohlx" path="res://Scripts/Classes/Stat Sheet.gd" id="2_wximo"]
+[ext_resource type="Script" uid="uid://hki0ialygjch" path="res://Scripts/Components/States/idle.gd" id="3_j4tfl"]
+[ext_resource type="PackedScene" uid="uid://br0s0bfdp2be" path="res://Scenes/Component/pathfinding_component.tscn" id="4_gedrr"]
+[ext_resource type="PackedScene" uid="uid://bsad3dcuvs8gi" path="res://Scenes/Component/animation_handler.tscn" id="5_gedrr"]
+[ext_resource type="PackedScene" uid="uid://knq274mxhmj" path="res://Scenes/Component/hunger_component.tscn" id="5_ihfhn"]
+[ext_resource type="PackedScene" uid="uid://so8vlf8vcosy" path="res://Scenes/Component/debugger_component.tscn" id="6_v65uf"]
+[ext_resource type="PackedScene" uid="uid://ch55c0koeb6f0" path="res://Scenes/Component/vision_component.tscn" id="6_wshao"]
+[ext_resource type="Script" uid="uid://teqcs1hbgb62" path="res://Scripts/Components/States/wander.gd" id="8_gedrr"]
+
+[sub_resource type="Resource" id="Resource_f7v0p"]
+script = ExtResource("2_wximo")
+health = 5
+hunger = 5
+vision_range = 1000.0
+speed = 100
+speed_cap = 1250
+friction = 0.1
+acceleration = 0.1
+metadata/_custom_type_script = "uid://d2ymegg2fohlx"
+
+[sub_resource type="Animation" id="Animation_gedrr"]
+resource_name = "Idle"
+loop_mode = 2
+
+[sub_resource type="Animation" id="Animation_v65uf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteComponent:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ihfhn"]
+resource_name = "Wander"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteComponent:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ihfhn"]
+_data = {
+&"Idle": SubResource("Animation_gedrr"),
+&"RESET": SubResource("Animation_v65uf"),
+&"Wander": SubResource("Animation_ihfhn")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4h3r"]
+size = Vector2(50, 10)
+
+[node name="Slime" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_l4h3r")
+stat_sheet = SubResource("Resource_f7v0p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ihfhn")
+}
+autoplay = "RESET"
+
+[node name="SpriteComponent" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_wsajx")
+region_enabled = true
+region_rect = Rect2(120, 15, 70, 60)
+
+[node name="CollisionComponent" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_l4h3r")
+
+[node name="PathfindingComponent" parent="." instance=ExtResource("4_gedrr")]
+
+[node name="HungerComponent" parent="." instance=ExtResource("5_ihfhn")]
+
+[node name="VisionComponent" parent="." instance=ExtResource("6_wshao")]
+
+[node name="AnimationHandler" parent="." node_paths=PackedStringArray("state_machine", "animation_player") instance=ExtResource("5_gedrr")]
+state_machine = NodePath("../State Machine")
+animation_player = NodePath("../AnimationPlayer")
+animtaion_dicts = {
+"Idle": "Idle",
+"Wander": "Wander"
+}
+enabled = false
+
+[node name="DebuggerComponent" parent="." node_paths=PackedStringArray("state_machine", "hunger_component") instance=ExtResource("6_v65uf")]
+offset_left = -37.0
+offset_top = -67.0
+offset_right = 37.0
+offset_bottom = -31.0
+state_machine = NodePath("../State Machine")
+hunger_component = NodePath("../HungerComponent")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_j4tfl")
+initial_state = NodePath("Wander")
+
+[node name="Idle" type="Node" parent="State Machine"]
+script = ExtResource("3_j4tfl")
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="Wander" type="Node" parent="State Machine" node_paths=PackedStringArray("pathfinding_component")]
+script = ExtResource("8_gedrr")
+pathfinding_component = NodePath("../../PathfindingComponent")
+wander_radius = 1000.0
+minimum_wander = 100.0
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="Timer" type="Timer" parent="State Machine/Wander"]
+wait_time = 3.0
+
+[connection signal="timeout" from="State Machine/Wander/Timer" to="State Machine/Wander" method="new_wander_position"]

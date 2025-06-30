@@ -11,5 +11,36 @@ config_version=5
 [application]
 
 config/name="Evolution Slimes"
+run/main_scene="uid://c86ksj3kxf4xl"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://4hns6hp7ejur"
+
+[autoload]
+
+Global="*res://Scripts/Global/global.gd"
+
+[display]
+
+window/size/mode=4
+window/size/borderless=true
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "yellow",
+"res://Scenes/": "red",
+"res://Scripts/": "purple",
+"res://Shaders/": "green"
+}
+
+[global_group]
+
+Food=""
+FoodProducer=""
+
+[layer_names]
+
+2d_physics/layer_1="Slime"
+2d_physics/layer_2="Wall"
+2d_physics/layer_3="Food Producer"
+2d_physics/layer_4="Food"

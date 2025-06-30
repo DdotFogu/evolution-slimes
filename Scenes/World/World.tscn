@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://c86ksj3kxf4xl"]
+
+[ext_resource type="PackedScene" uid="uid://cliqmeglrrpb8" path="res://Scenes/Characters/Slimes/slime.tscn" id="1_xf6vi"]
+[ext_resource type="PackedScene" uid="uid://bl6ldc0qkyg3" path="res://Scenes/Component/camera_component.tscn" id="2_ouhkt"]
+[ext_resource type="Shader" uid="uid://d2nuvo2k75of3" path="res://Shaders/scrolling_bg.gdshader" id="3_ouhkt"]
+[ext_resource type="PackedScene" uid="uid://c1tcwfe7fwa70" path="res://Scenes/Food/producer/fruit_tree.tscn" id="4_5jr8x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5jr8x"]
+shader = ExtResource("3_ouhkt")
+shader_parameter/color_one = Color(0.205117, 0.205117, 0.205117, 1)
+shader_parameter/color_two = Color(0.118581, 0.118581, 0.118581, 1)
+shader_parameter/angle = -125.0
+shader_parameter/line_count = 150.0
+shader_parameter/speed = 1.0
+shader_parameter/blur = 0.0
+
+[node name="World" type="Node2D"]
+
+[node name="CameraComponent" parent="." instance=ExtResource("2_ouhkt")]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Scroll" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_5jr8x")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ysort" type="Node2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+
+[node name="Slime" parent="Ysort" instance=ExtResource("1_xf6vi")]
+position = Vector2(0, 400)
+collision_mask = 2
+
+[node name="apple_tree" parent="Ysort" instance=ExtResource("4_5jr8x")]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b70n01fq6q070"]
+
+[ext_resource type="Script" uid="uid://teqcs1hbgb62" path="res://Scripts/Components/States/wander.gd" id="1_f8vr7"]
+
+[node name="Wander" type="Node" node_paths=PackedStringArray("pathfinding_component")]
+script = ExtResource("1_f8vr7")
+pathfinding_component = NodePath("")
+wander_radius = 1000.0
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="new_wander_position"]

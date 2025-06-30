@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://so8vlf8vcosy"]
+
+[ext_resource type="Script" uid="uid://dm7lkte1jii2a" path="res://Scripts/Components/debugger_component.gd" id="1_vij4e"]
+[ext_resource type="FontFile" uid="uid://ddyr1wwb5byj1" path="res://Assets/Fonts/Vaticanus-G3yVG.ttf" id="2_pylaa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p3cuv"]
+font = ExtResource("2_pylaa")
+
+[node name="DebuggerComponent" type="VBoxContainer"]
+offset_right = 74.0
+offset_bottom = 36.0
+script = ExtResource("1_vij4e")
+
+[node name="Food" type="Label" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Hunger"
+label_settings = SubResource("LabelSettings_p3cuv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HP" type="Label" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+text = "HP"
+label_settings = SubResource("LabelSettings_p3cuv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="State" type="Label" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+text = "State"
+label_settings = SubResource("LabelSettings_p3cuv")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://txok652qn8js"]
+
+[ext_resource type="Script" uid="uid://clvnyppangko0" path="res://Scripts/Classes/food_base.gd" id="1_mtgt5"]
+[ext_resource type="Texture2D" uid="uid://4hns6hp7ejur" path="res://Assets/Sprites/Slimes/Slime.png" id="1_rhkef"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mtgt5"]
+radius = 15.0
+
+[node name="Apple" type="CharacterBody2D" groups=["Food"]]
+collision_layer = 8
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_mtgt5")
+grow_time = 45
+life_time = 90
+rot_time = 30
+hunger_restoration = 3
+
+[node name="SpriteComponent" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+texture = ExtResource("1_rhkef")
+region_enabled = true
+region_rect = Rect2(85, 290, 25, 30)
+
+[node name="CollisionComponet" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mtgt5")

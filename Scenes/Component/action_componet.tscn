@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b44velwyjad5s"]
+
+[ext_resource type="Script" uid="uid://c5dkv03k1eiu1" path="res://Scripts/Components/action_componet.gd" id="1_7rxr7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7rxr7"]
+radius = 0.01
+
+[node name="ActionComponet" type="Node2D"]
+script = ExtResource("1_7rxr7")
+
+[node name="VisionNode" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 12
+
+[node name="Range" type="CollisionShape2D" parent="VisionNode"]
+shape = SubResource("CircleShape2D_7rxr7")
+debug_color = Color(0.646687, 0.521541, 0, 0.42)

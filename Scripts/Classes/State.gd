@@ -3,6 +3,7 @@ class_name State
 
 signal Transitioned
 signal Entered
+signal Exited
 
 @onready var state_machine = get_parent()
 @onready var body = owner
@@ -11,7 +12,7 @@ func enter():
 	pass
 
 func exit():
-	pass
+	Exited.emit()
 
 func update(_delta: float):
 	pass

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqcpn11fuxc8q"]
+
+[ext_resource type="Script" uid="uid://clprnnmtig1aq" path="res://Scripts/Components/thrist_component.gd" id="1_ctta4"]
+
+[node name="ThristComponent" type="Node"]
+script = ExtResource("1_ctta4")

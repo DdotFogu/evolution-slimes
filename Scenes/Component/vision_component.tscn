@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ch55c0koeb6f0"]
 
-[ext_resource type="Script" uid="uid://dk8als7vpa813" path="res://Scenes/Characters/Slimes/vision_component.gd" id="1_3eku2"]
+[ext_resource type="Script" uid="uid://dk8als7vpa813" path="res://Scripts/Components/vision_component.gd" id="1_3eku2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3eku2"]
 radius = 0.01
@@ -16,3 +16,4 @@ collision_mask = 4
 
 [node name="Range" type="CollisionShape2D" parent="VisionNode"]
 shape = SubResource("CircleShape2D_3eku2")
+debug_color = Color(0, 0.6, 0.701961, 0)

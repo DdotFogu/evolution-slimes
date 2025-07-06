@@ -22,27 +22,23 @@ func _ready():
 		current_state = initial_state
 
 func _process(delta):
-	if current_state:
-		current_state.update(delta)
+	if current_state: current_state.update(delta)
 
 func _physics_process(delta):
-	if current_state:
-		current_state.physics_update(delta)
+	if current_state: current_state.physics_update(delta)
 
 func on_child_transition(state, new_state_name, force_update : bool = false):
-	if !force_update:
-		if in_stun(): return false
+	if !force_update: if in_stun(): return false
 	
-	if state != current_state:
-		return
+	if state != current_state: return
 	
 	var new_state = states.get(new_state_name.to_lower())
-	if !new_state:
-		return
+	if !new_state: return
 	
-	if current_state:
-		current_state.exit()
+	if current_state: current_state.exit()
 	
 	new_state.enter()
 	
 	current_state = new_state
+	
+	print(new_state.name)

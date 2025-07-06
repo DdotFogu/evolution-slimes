@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_27jhl"]
 size = Vector2(40, 6)
 
-[node name="apple_tree" type="StaticBody2D" groups=["FruitProducer"]]
+[node name="apple_tree" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_ar3kd")
@@ -19,7 +19,7 @@ texture_filter = 1
 position = Vector2(0, -32)
 texture = ExtResource("3_d6anb")
 region_enabled = true
-region_rect = Rect2(0, 225, 80, 95)
+region_rect = Rect2(0, 200, 80, 95)
 
 [node name="CollisionComponent" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_27jhl")

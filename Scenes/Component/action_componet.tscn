@@ -7,6 +7,7 @@ radius = 0.01
 
 [node name="ActionComponet" type="Node2D"]
 script = ExtResource("1_7rxr7")
+searchable_items = 8
 
 [node name="VisionNode" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -15,4 +16,4 @@ collision_mask = 12
 
 [node name="Range" type="CollisionShape2D" parent="VisionNode"]
 shape = SubResource("CircleShape2D_7rxr7")
-debug_color = Color(0.646687, 0.521541, 0, 0.42)
+debug_color = Color(0.647059, 0.521569, 0, 0)

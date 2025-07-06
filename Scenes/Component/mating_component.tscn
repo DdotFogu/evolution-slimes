@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpa3n8dxp3xyn"]
+
+[ext_resource type="Script" uid="uid://cmsbyp63rqrn0" path="res://Scripts/Components/mating_component.gd" id="1_bc3ww"]
+
+[node name="MatingComponent" type="Node"]
+script = ExtResource("1_bc3ww")

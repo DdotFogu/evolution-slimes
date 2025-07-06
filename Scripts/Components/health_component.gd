@@ -5,10 +5,10 @@ class_name health_component
 signal took_damage
 signal death
 
-@onready var health : int = owner.stat_sheet.health
+@onready var health : int = owner.stat_sheet.health_stats.health
 
 func take_damage(amount : int, hideDamage : bool = false):
-	health = clampi(health - amount, 0, owner.stat_sheet.health)
+	health = clampi(health - amount, 0, owner.stat_sheet.health_stats.health)
 	
 	took_damage.emit()
 	

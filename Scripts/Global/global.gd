@@ -1,6 +1,6 @@
 extends Node
 
-var rng = RandomNumberGenerator.new()
+@onready var rng = RandomNumberGenerator.new()
 var current_camera : Camera2D
 var y_sort : Node2D
 var GameInfo : CanvasLayer

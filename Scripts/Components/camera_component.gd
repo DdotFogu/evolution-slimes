@@ -21,10 +21,9 @@ func _input(event: InputEvent) -> void:
 		
 		var tween = create_tween()
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			tween.tween_property(self, "zoom", zoom + Vector2(0.2,0.2), 0.2)
+			tween.tween_property(self, "zoom", zoom + Vector2(0.1,0.1), 0)
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			tween.tween_property(self, "zoom", zoom - Vector2(0.2,0.2), 0.2)
-
+			tween.tween_property(self, "zoom", zoom - Vector2(0.1,0.1), 0)
 
 func change_target(new_target : Node, speed : float = sens, do_pause : bool = false):
 	target = new_target

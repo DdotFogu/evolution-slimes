@@ -7,8 +7,9 @@
 font = ExtResource("2_pylaa")
 
 [node name="DebuggerComponent" type="VBoxContainer"]
-offset_right = 74.0
-offset_bottom = 36.0
+offset_left = -567.0
+offset_right = 569.0
+offset_bottom = 96.0
 script = ExtResource("1_vij4e")
 
 [node name="Food" type="Label" parent="."]
@@ -21,12 +22,32 @@ label_settings = SubResource("LabelSettings_p3cuv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Thrist" type="Label" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Thrist"
+label_settings = SubResource("LabelSettings_p3cuv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HP" type="Label" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 text = "HP"
+label_settings = SubResource("LabelSettings_p3cuv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionQueue" type="Label" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+text = "{}"
 label_settings = SubResource("LabelSettings_p3cuv")
 horizontal_alignment = 1
 vertical_alignment = 1

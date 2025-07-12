@@ -11,3 +11,7 @@ func drink():
 	thrist_component.decay_thrist(-body.stat_sheet.diet_stats.thrist)
 	
 	if thrist_component.remaining_thrist == body.stat_sheet.diet_stats.thrist: await get_tree().create_timer(0.1).timeout; Transitioned.emit(self, "Wander")
+	
+	thrist_component.drank()
+
+func exit(): action_component.clear_curr_action()

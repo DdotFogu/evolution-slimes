@@ -3,8 +3,7 @@ extends Node
 @onready var rng = RandomNumberGenerator.new()
 var current_camera : Camera2D
 var y_sort : Node2D
-var GameInfo : CanvasLayer
-var in_dialouge : bool = false
+var slime_pop : int = 0
 
 func _process(delta: float) -> void:
 	if get_tree().current_scene != null && get_tree().current_scene.get_node("Ysort") != null: y_sort = get_tree().current_scene.get_node("Ysort")

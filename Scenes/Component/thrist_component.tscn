@@ -4,3 +4,9 @@
 
 [node name="ThristComponent" type="Node"]
 script = ExtResource("1_ctta4")
+
+[node name="DehydratedTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 60.0
+
+[connection signal="timeout" from="DehydratedTimer" to="." method="dehydrated"]

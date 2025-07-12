@@ -1,0 +1,283 @@
+[gd_scene load_steps=41 format=3 uid="uid://cliqmeglrrpb8"]
+
+[ext_resource type="Script" uid="uid://bamnaw52w1k70" path="res://Scripts/Classes/Character Base.gd" id="1_l4h3r"]
+[ext_resource type="Texture2D" uid="uid://4hns6hp7ejur" path="res://Assets/Sprites/Slimes/Slime.png" id="1_wsajx"]
+[ext_resource type="Script" uid="uid://cld53y2v7ce22" path="res://Scripts/Classes/stats/Action Stats.gd" id="2_gtpi0"]
+[ext_resource type="Script" uid="uid://btt00psp2ndbv" path="res://Scripts/Classes/stats/Movement Stats.gd" id="2_irhdk"]
+[ext_resource type="Script" uid="uid://fow641oc4s1c" path="res://Scripts/Components/state_machine.gd" id="2_j4tfl"]
+[ext_resource type="Script" uid="uid://bnegr4jaj148f" path="res://Scripts/Classes/stats/Diet Stats.gd" id="2_wsopt"]
+[ext_resource type="Script" uid="uid://d2ymegg2fohlx" path="res://Scripts/Classes/stats/Stat Sheet.gd" id="2_wximo"]
+[ext_resource type="Script" uid="uid://hki0ialygjch" path="res://Scripts/Components/States/idle.gd" id="3_j4tfl"]
+[ext_resource type="Script" uid="uid://17vk0qsshlcu" path="res://Scripts/Classes/stats/Health Stats.gd" id="4_4pmhr"]
+[ext_resource type="PackedScene" uid="uid://br0s0bfdp2be" path="res://Scenes/Component/pathfinding_component.tscn" id="4_gedrr"]
+[ext_resource type="Script" uid="uid://bdsmn6e6mhnl7" path="res://Scripts/Classes/stats/Mating Stats.gd" id="5_1qvax"]
+[ext_resource type="PackedScene" uid="uid://cgvkdw6rtfih5" path="res://Scenes/Component/health_component.tscn" id="5_75rkc"]
+[ext_resource type="PackedScene" uid="uid://bsad3dcuvs8gi" path="res://Scenes/Component/animation_handler.tscn" id="5_gedrr"]
+[ext_resource type="PackedScene" uid="uid://knq274mxhmj" path="res://Scenes/Component/hunger_component.tscn" id="5_ihfhn"]
+[ext_resource type="PackedScene" uid="uid://b44velwyjad5s" path="res://Scenes/Component/action_componet.tscn" id="6_fvlnl"]
+[ext_resource type="PackedScene" uid="uid://so8vlf8vcosy" path="res://Scenes/Component/debugger_component.tscn" id="6_v65uf"]
+[ext_resource type="PackedScene" uid="uid://ch55c0koeb6f0" path="res://Scenes/Component/vision_component.tscn" id="6_wshao"]
+[ext_resource type="PackedScene" uid="uid://bqcpn11fuxc8q" path="res://Scenes/Component/thrist_component.tscn" id="7_jyv1b"]
+[ext_resource type="Script" uid="uid://be1bekq0ekp1y" path="res://Scripts/Components/slime_actions.gd" id="8_0vppr"]
+[ext_resource type="Script" uid="uid://teqcs1hbgb62" path="res://Scripts/Components/States/wander.gd" id="8_gedrr"]
+[ext_resource type="PackedScene" uid="uid://dcygtewm0rodh" path="res://Scenes/Component/product_rays.tscn" id="9_cpr5w"]
+[ext_resource type="Script" uid="uid://dih136ovs2sx3" path="res://Scripts/Components/States/goto.gd" id="12_tcvs3"]
+[ext_resource type="Script" uid="uid://bxdx86c1c8kh0" path="res://Scripts/Components/States/state.gd" id="14_3v63c"]
+[ext_resource type="PackedScene" uid="uid://dpa3n8dxp3xyn" path="res://Scenes/Component/mating_component.tscn" id="14_suceo"]
+[ext_resource type="Script" uid="uid://m1fpjvuaupey" path="res://Scripts/Components/States/drinking.gd" id="17_17pxh"]
+[ext_resource type="Script" uid="uid://db72v3kab4thr" path="res://Scripts/Components/States/explore.gd" id="23_meode"]
+[ext_resource type="Texture2D" uid="uid://dk5krvfo7sd56" path="res://Assets/Sprites/ArrowTest.png" id="25_3tgh1"]
+[ext_resource type="Script" uid="uid://bilp07snpp3je" path="res://Scripts/Components/States/mate.gd" id="27_qcvnl"]
+
+[sub_resource type="Resource" id="Resource_4pmhr"]
+script = ExtResource("2_gtpi0")
+vision_range = 1500.0
+action_range = 200.0
+metadata/_custom_type_script = "uid://cld53y2v7ce22"
+
+[sub_resource type="Resource" id="Resource_gtpi0"]
+script = ExtResource("2_wsopt")
+diet = Array[String](["Fruit"])
+hunger = 5
+hunger_decay_time = 60.0
+thrist = 5
+metadata/_custom_type_script = "uid://bnegr4jaj148f"
+
+[sub_resource type="Resource" id="Resource_meode"]
+script = ExtResource("4_4pmhr")
+health = 5
+metadata/_custom_type_script = "uid://17vk0qsshlcu"
+
+[sub_resource type="Resource" id="Resource_suceo"]
+script = ExtResource("5_1qvax")
+reproduction_cooldown = 0.0
+gender = 0
+is_fertile = true
+attractiveness = 100.0
+sex_drive = 100.0
+offspring_count = 1
+gestation_period = 100.0
+is_pregnant = false
+metadata/_custom_type_script = "uid://bdsmn6e6mhnl7"
+
+[sub_resource type="Resource" id="Resource_wsopt"]
+script = ExtResource("2_irhdk")
+speed = 200
+speed_cap = 1250
+friction = 0.1
+acceleration = 0.1
+metadata/_custom_type_script = "uid://btt00psp2ndbv"
+
+[sub_resource type="Resource" id="Resource_f7v0p"]
+script = ExtResource("2_wximo")
+health_stats = SubResource("Resource_meode")
+action_stats = SubResource("Resource_4pmhr")
+mating_stats = SubResource("Resource_suceo")
+diet_stats = SubResource("Resource_gtpi0")
+movement_stats = SubResource("Resource_wsopt")
+metadata/_custom_type_script = "uid://d2ymegg2fohlx"
+
+[sub_resource type="Animation" id="Animation_gedrr"]
+resource_name = "Idle"
+loop_mode = 2
+
+[sub_resource type="Animation" id="Animation_v65uf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteComponent:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ihfhn"]
+resource_name = "Wander"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteComponent:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ihfhn"]
+_data = {
+&"Idle": SubResource("Animation_gedrr"),
+&"RESET": SubResource("Animation_v65uf"),
+&"Wander": SubResource("Animation_ihfhn")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_meode"]
+radius = 5.0
+height = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_meode"]
+radius = 5.0
+
+[node name="Slime" type="CharacterBody2D" groups=["Slime"]]
+y_sort_enabled = true
+collision_mask = 0
+motion_mode = 1
+platform_on_leave = 2
+platform_floor_layers = 4294967040
+script = ExtResource("1_l4h3r")
+stat_sheet = SubResource("Resource_f7v0p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ihfhn")
+}
+autoplay = "RESET"
+
+[node name="SpriteComponent" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_wsajx")
+region_enabled = true
+region_rect = Rect2(120, 15, 70, 60)
+
+[node name="CollisionComponent" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_meode")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="PathfindingComponent" parent="." instance=ExtResource("4_gedrr")]
+
+[node name="ProductRays" parent="PathfindingComponent" instance=ExtResource("9_cpr5w")]
+unique_name_in_owner = true
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_75rkc")]
+
+[node name="HungerComponent" parent="." node_paths=PackedStringArray("action_component", "health_component", "hungry_state") instance=ExtResource("5_ihfhn")]
+action_component = NodePath("../ActionComponet")
+health_component = NodePath("../HealthComponent")
+hungry_state = NodePath("../State Machine/Goto")
+hunger_states = null
+
+[node name="ThristComponent" parent="." node_paths=PackedStringArray("action_component", "thristy_state") instance=ExtResource("7_jyv1b")]
+action_component = NodePath("../ActionComponet")
+thristy_state = NodePath("../State Machine/Drinking")
+enabled = true
+thrist_decay_time = 30.0
+
+[node name="MatingComponent" parent="." node_paths=PackedStringArray("hunger_component", "thrist_component", "action_component") instance=ExtResource("14_suceo")]
+hunger_component = NodePath("../HungerComponent")
+thrist_component = NodePath("../ThristComponent")
+action_component = NodePath("../ActionComponet")
+
+[node name="ActionComponet" parent="." node_paths=PackedStringArray("vision_component", "action_component") instance=ExtResource("6_fvlnl")]
+script = ExtResource("8_0vppr")
+states = {
+"drink": NodePath("../State Machine/Drinking"),
+"eat": NodePath("../State Machine/Eating"),
+"explore": NodePath("../State Machine/Explore"),
+"goto": NodePath("../State Machine/Goto"),
+"idle": NodePath("../State Machine/Idle"),
+"mate": NodePath("../State Machine/Mate"),
+"wander": NodePath("../State Machine/Wander")
+}
+vision_component = NodePath("../VisionComponent")
+action_component = NodePath(".")
+searchable_items = 24
+
+[node name="VisionComponent" parent="." instance=ExtResource("6_wshao")]
+searchable_items = 25
+
+[node name="AnimationHandler" parent="." node_paths=PackedStringArray("state_machine", "animation_player") instance=ExtResource("5_gedrr")]
+state_machine = NodePath("../State Machine")
+animation_player = NodePath("../AnimationPlayer")
+animtaion_dicts = {
+"Idle": "Idle",
+"Wander": "Wander"
+}
+enabled = false
+
+[node name="DebuggerComponent" parent="." node_paths=PackedStringArray("state_machine", "hunger_component", "health_component", "thrist_component", "action_component") instance=ExtResource("6_v65uf")]
+z_index = 10
+y_sort_enabled = true
+offset_left = -862.0
+offset_top = -126.0
+offset_right = 866.0
+offset_bottom = -30.0
+state_machine = NodePath("../State Machine")
+hunger_component = NodePath("../HungerComponent")
+health_component = NodePath("../HealthComponent")
+thrist_component = NodePath("../ThristComponent")
+action_component = NodePath("../ActionComponet")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_j4tfl")
+initial_state = NodePath("Wander")
+
+[node name="Idle" type="Node" parent="State Machine"]
+unique_name_in_owner = true
+script = ExtResource("3_j4tfl")
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="Wander" type="Node" parent="State Machine" node_paths=PackedStringArray("pathfinding_component")]
+script = ExtResource("8_gedrr")
+pathfinding_component = NodePath("../../PathfindingComponent")
+wander_radius = 1000.0
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="wander_timer" type="Timer" parent="State Machine/Wander"]
+
+[node name="fallback_timer" type="Timer" parent="State Machine/Wander"]
+wait_time = 5.0
+
+[node name="Goto" type="Node" parent="State Machine" node_paths=PackedStringArray("pathfinding_component")]
+script = ExtResource("12_tcvs3")
+pathfinding_component = NodePath("../../PathfindingComponent")
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="Eating" type="Node" parent="State Machine" node_paths=PackedStringArray("action_component", "hunger_component")]
+script = ExtResource("14_3v63c")
+action_component = NodePath("../../ActionComponet")
+hunger_component = NodePath("../../HungerComponent")
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="Drinking" type="Node" parent="State Machine" node_paths=PackedStringArray("action_component", "thrist_component")]
+script = ExtResource("17_17pxh")
+action_component = NodePath("../../ActionComponet")
+thrist_component = NodePath("../../ThristComponent")
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="Explore" type="Node" parent="State Machine"]
+script = ExtResource("23_meode")
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="Mate" type="Node" parent="State Machine"]
+script = ExtResource("27_qcvnl")
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="ExploreRay" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0, 1, 0, 0.196078)
+shape = SubResource("CircleShape2D_meode")
+target_position = Vector2(0, 0)
+collision_mask = 18
+
+[node name="ArrowTest" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(0, -50)
+texture = ExtResource("25_3tgh1")
+
+[connection signal="action" from="ActionComponet" to="State Machine/Wander" method="disable_timer"]
+[connection signal="timeout" from="State Machine/Wander/wander_timer" to="State Machine/Wander" method="new_wander_position"]
+[connection signal="timeout" from="State Machine/Wander/fallback_timer" to="State Machine/Wander" method="new_wander_position" binds= [true]]
+[connection signal="Exited" from="State Machine/Eating" to="ActionComponet" method="clear_curr_action"]
+[connection signal="Exited" from="State Machine/Drinking" to="ActionComponet" method="clear_curr_action"]

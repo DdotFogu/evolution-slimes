@@ -5,4 +5,10 @@
 [node name="HungerComponent" type="Node"]
 script = ExtResource("1_joq7a")
 enabled = true
-hunger_decay_time = 60.0
+
+[node name="StraveTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 15.0
+autostart = true
+
+[connection signal="timeout" from="StraveTimer" to="." method="strave"]

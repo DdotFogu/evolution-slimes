@@ -1,75 +1,20 @@
-[gd_scene load_steps=24 format=4 uid="uid://c86ksj3kxf4xl"]
+[gd_scene load_steps=37 format=4 uid="uid://c86ksj3kxf4xl"]
 
-[ext_resource type="PackedScene" uid="uid://cliqmeglrrpb8" path="res://Scenes/Characters/Slimes/slime.tscn" id="1_xf6vi"]
 [ext_resource type="PackedScene" uid="uid://bl6ldc0qkyg3" path="res://Scenes/Component/camera_component.tscn" id="2_ouhkt"]
-[ext_resource type="PackedScene" uid="uid://bcnuoagaksfrf" path="res://Scenes/HUD/ui.tscn" id="3_kjd5s"]
+[ext_resource type="PackedScene" uid="uid://sotyh3vmciew" path="res://Scenes/Component/seed_component.tscn" id="2_x5sp8"]
+[ext_resource type="PackedScene" uid="uid://b1fnbjw2www8p" path="res://Scenes/Component/map_manager.tscn" id="3_87yka"]
 [ext_resource type="Shader" uid="uid://d2nuvo2k75of3" path="res://Shaders/scrolling_bg.gdshader" id="3_ouhkt"]
-[ext_resource type="PackedScene" uid="uid://c1tcwfe7fwa70" path="res://Scenes/Food/producer/fruit_tree.tscn" id="4_5jr8x"]
 [ext_resource type="Texture2D" uid="uid://4hns6hp7ejur" path="res://Assets/Sprites/Slimes/Slime.png" id="5_27jhl"]
-[ext_resource type="Script" uid="uid://cld53y2v7ce22" path="res://Scripts/Classes/stats/Action Stats.gd" id="6_lp0bp"]
-[ext_resource type="Script" uid="uid://bnegr4jaj148f" path="res://Scripts/Classes/stats/Diet Stats.gd" id="7_0phyg"]
-[ext_resource type="Script" uid="uid://b5b5dvushigdb" path="res://Scripts/Components/seed_component.gd" id="7_87yka"]
-[ext_resource type="Script" uid="uid://17vk0qsshlcu" path="res://Scripts/Classes/stats/Health Stats.gd" id="8_30wmc"]
-[ext_resource type="PackedScene" uid="uid://34k5h3enuf6c" path="res://Scenes/World/water_source.tscn" id="8_kjd5s"]
-[ext_resource type="Script" uid="uid://bdsmn6e6mhnl7" path="res://Scripts/Classes/stats/Mating Stats.gd" id="9_nfd2q"]
-[ext_resource type="Script" uid="uid://btt00psp2ndbv" path="res://Scripts/Classes/stats/Movement Stats.gd" id="10_liy54"]
-[ext_resource type="Script" uid="uid://d2ymegg2fohlx" path="res://Scripts/Classes/stats/Stat Sheet.gd" id="11_c1bjq"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5jr8x"]
-shader = ExtResource("3_ouhkt")
-shader_parameter/color_one = Color(0.223529, 0.470588, 0.658824, 1)
-shader_parameter/color_two = Color(0.223529, 0.470588, 0.658824, 1)
-shader_parameter/angle = -125.0
-shader_parameter/line_count = 150.0
-shader_parameter/speed = 1.0
-shader_parameter/blur = 0.0
-
-[sub_resource type="Resource" id="Resource_4pmhr"]
-script = ExtResource("6_lp0bp")
-vision_range = 1500.0
-action_range = 200.0
-metadata/_custom_type_script = "uid://cld53y2v7ce22"
-
-[sub_resource type="Resource" id="Resource_gtpi0"]
-script = ExtResource("7_0phyg")
-diet = Array[String](["Fruit"])
-hunger = 5
-thrist = 5
-metadata/_custom_type_script = "uid://bnegr4jaj148f"
-
-[sub_resource type="Resource" id="Resource_meode"]
-script = ExtResource("8_30wmc")
-health = 5
-metadata/_custom_type_script = "uid://17vk0qsshlcu"
-
-[sub_resource type="Resource" id="Resource_lp0bp"]
-script = ExtResource("9_nfd2q")
-reproduction_cooldown = 0.0
-gender = 1
-is_fertile = true
-attractiveness = 100.0
-sex_drive = 100.0
-offspring_count = 1
-gestation_period = 100.0
-is_pregnant = false
-metadata/_custom_type_script = "uid://bdsmn6e6mhnl7"
-
-[sub_resource type="Resource" id="Resource_wsopt"]
-script = ExtResource("10_liy54")
-speed = 200
-speed_cap = 1250
-friction = 0.1
-acceleration = 0.1
-metadata/_custom_type_script = "uid://btt00psp2ndbv"
-
-[sub_resource type="Resource" id="Resource_0phyg"]
-script = ExtResource("11_c1bjq")
-health_stats = SubResource("Resource_meode")
-action_stats = SubResource("Resource_4pmhr")
-mating_stats = SubResource("Resource_lp0bp")
-diet_stats = SubResource("Resource_gtpi0")
-movement_stats = SubResource("Resource_wsopt")
-metadata/_custom_type_script = "uid://d2ymegg2fohlx"
+[ext_resource type="Script" uid="uid://dt8kx0ogni502" path="res://Scripts/Ui/menu.gd" id="5_87yka"]
+[ext_resource type="FontFile" uid="uid://ddyr1wwb5byj1" path="res://Assets/Fonts/Vaticanus-G3yVG.ttf" id="5_hveh7"]
+[ext_resource type="PackedScene" uid="uid://cliqmeglrrpb8" path="res://Scenes/Characters/Slimes/slime.tscn" id="5_kjd5s"]
+[ext_resource type="Script" uid="uid://cld53y2v7ce22" path="res://Scripts/Classes/stats/Action Stats.gd" id="6_0phyg"]
+[ext_resource type="Script" uid="uid://bnegr4jaj148f" path="res://Scripts/Classes/stats/Diet Stats.gd" id="7_30wmc"]
+[ext_resource type="Script" uid="uid://cggoonwmx4efq" path="res://Scripts/Classes/stats/Growth Stats.gd" id="8_nfd2q"]
+[ext_resource type="Script" uid="uid://17vk0qsshlcu" path="res://Scripts/Classes/stats/Health Stats.gd" id="9_liy54"]
+[ext_resource type="Script" uid="uid://bdsmn6e6mhnl7" path="res://Scripts/Classes/stats/Mating Stats.gd" id="10_c1bjq"]
+[ext_resource type="Script" uid="uid://btt00psp2ndbv" path="res://Scripts/Classes/stats/Movement Stats.gd" id="11_7n4rk"]
+[ext_resource type="Script" uid="uid://d2ymegg2fohlx" path="res://Scripts/Classes/stats/Stat Sheet.gd" id="12_jclsg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hveh7"]
 texture = ExtResource("5_27jhl")
@@ -94,23 +39,19 @@ texture_region_size = Vector2i(80, 80)
 6:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-40, -40, 5.71429, -40, 4.44445, 22.2222, -40, 22.2222)
 4:4/0 = 0
 4:4/0/terrain_set = 0
-4:4/0/terrain = 0
 4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, -25.1914, -24.7249, -25.1914, -26.1244, 40)
 4:4/0/terrains_peering_bit/bottom_right_corner = 0
 5:4/0 = 0
 5:4/0/terrain_set = 0
-5:4/0/terrain = 0
 5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -40, 40, -40, 40, -25.1914, -40, -24.2724)
 5:4/0/terrains_peering_bit/bottom_right_corner = 0
 5:4/0/terrains_peering_bit/bottom_left_corner = 0
 6:4/0 = 0
 6:4/0/terrain_set = 0
-6:4/0/terrain = 0
 6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -40, 40, -40, 40, 40, 24.2724, 40, 25.4013, -24.2724, -40, -24.2724)
 6:4/0/terrains_peering_bit/bottom_left_corner = 0
 4:5/0 = 0
 4:5/0/terrain_set = 0
-4:5/0/terrain = 0
 4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -40, -25.245, -40, -25.1208, 40, -40, 40)
 4:5/0/terrains_peering_bit/bottom_right_corner = 0
 4:5/0/terrains_peering_bit/top_right_corner = 0
@@ -487,24 +428,20 @@ texture_region_size = Vector2i(80, 80)
 34:34/0 = 0
 6:5/0 = 0
 6:5/0/terrain_set = 0
-6:5/0/terrain = 0
 6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(25.0603, 40, 26.1244, -40, 40, -40, 40, 40)
 6:5/0/terrains_peering_bit/bottom_left_corner = 0
 6:5/0/terrains_peering_bit/top_left_corner = 0
 6:6/0 = 0
 6:6/0/terrain_set = 0
-6:6/0/terrain = 0
 6:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -20.0598, 25.6579, -20.0598, 26.1244, -40, 40, -40, 40, 0, -40, 0)
 6:6/0/terrains_peering_bit/top_left_corner = 0
 5:6/0 = 0
 5:6/0/terrain_set = 0
-5:6/0/terrain = 0
 5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -20.0598, 40, -19.5933, 40, 0, -40, 0)
 5:6/0/terrains_peering_bit/top_left_corner = 0
 5:6/0/terrains_peering_bit/top_right_corner = 0
 4:6/0 = 0
 4:6/0/terrain_set = 0
-4:6/0/terrain = 0
 4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -40, -25.245, -40, -24.5921, -20.4571, 40, -19.5933, 40, 0, -40, 0)
 4:6/0/terrains_peering_bit/top_right_corner = 0
 4:1/0 = 0
@@ -519,8 +456,18 @@ texture_region_size = Vector2i(80, 80)
 0:2/size_in_atlas = Vector2i(1, 2)
 0:2/0 = 0
 5:7/0 = 0
+5:7/0/terrain_set = 0
+5:7/0/terrain = 1
+5:7/0/terrains_peering_bit/bottom_right_corner = 1
+5:7/0/terrains_peering_bit/bottom_left_corner = 1
+5:7/0/terrains_peering_bit/top_left_corner = 1
+5:7/0/terrains_peering_bit/top_right_corner = 1
 6:7/0 = 0
+6:7/0/terrain_set = 0
+6:7/0/terrains_peering_bit/bottom_left_corner = 1
 4:7/0 = 0
+4:7/0/terrain_set = 0
+4:7/0/terrains_peering_bit/bottom_right_corner = 1
 
 [sub_resource type="TileSet" id="TileSet_5jr8x"]
 tile_size = Vector2i(80, 80)
@@ -531,58 +478,740 @@ physics_layer_1/collision_mask = 0
 terrain_set_0/mode = 1
 terrain_set_0/terrain_0/name = "Ground 0"
 terrain_set_0/terrain_0/color = Color(1, 0, 0.25098, 1)
+terrain_set_0/terrain_1/name = "Water 1"
+terrain_set_0/terrain_1/color = Color(0.68569, 0.00105156, 0.794158, 1)
 sources/0 = SubResource("TileSetAtlasSource_hveh7")
+
+[sub_resource type="Resource" id="Resource_lqys3"]
+script = ExtResource("6_0phyg")
+vision_range = 1500.0
+action_range = 200.0
+metadata/_custom_type_script = "uid://cld53y2v7ce22"
+
+[sub_resource type="Resource" id="Resource_qs546"]
+script = ExtResource("7_30wmc")
+diet = Array[String](["Fruit"])
+hunger = 100
+hunger_decay = 0.0
+hunger_threshold = 0.5
+thrist = 100
+thrist_decay = 0.0
+thrist_threshold = 0.5
+metadata/_custom_type_script = "uid://bnegr4jaj148f"
+
+[sub_resource type="Resource" id="Resource_41ig8"]
+script = ExtResource("8_nfd2q")
+inital_growth = 1.0
+growth_speed = 0.0001
+metadata/_custom_type_script = "uid://cggoonwmx4efq"
+
+[sub_resource type="Resource" id="Resource_hlwfy"]
+script = ExtResource("9_liy54")
+health = 5
+metadata/_custom_type_script = "uid://17vk0qsshlcu"
+
+[sub_resource type="Resource" id="Resource_ecorn"]
+script = ExtResource("10_c1bjq")
+reproduction_cooldown = 0.0
+gender = 0
+is_fertile = true
+attractiveness = 100.0
+sex_drive = 0.0
+offspring_count = 1
+gestation_period = 120.0
+metadata/_custom_type_script = "uid://bdsmn6e6mhnl7"
+
+[sub_resource type="Resource" id="Resource_uxwvq"]
+script = ExtResource("11_7n4rk")
+speed = 200
+friction = 0.1
+acceleration = 0.1
+metadata/_custom_type_script = "uid://btt00psp2ndbv"
+
+[sub_resource type="Resource" id="Resource_863yi"]
+script = ExtResource("12_jclsg")
+health_stats = SubResource("Resource_hlwfy")
+action_stats = SubResource("Resource_lqys3")
+mating_stats = SubResource("Resource_ecorn")
+growth_stats = SubResource("Resource_41ig8")
+diet_stats = SubResource("Resource_qs546")
+movement_stats = SubResource("Resource_uxwvq")
+metadata/_custom_type_script = "uid://d2ymegg2fohlx"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x5sp8"]
+shader = ExtResource("3_ouhkt")
+shader_parameter/color_one = Color(0.223529, 0.470588, 0.658824, 1)
+shader_parameter/color_two = Color(0.223529, 0.470588, 0.658824, 1)
+shader_parameter/angle = 20.0
+shader_parameter/line_count = 20.0
+shader_parameter/speed = 10.0
+shader_parameter/blur = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_87yka"]
+font = ExtResource("5_hveh7")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_kjd5s"]
+font = ExtResource("5_hveh7")
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_27jhl"]
+font = ExtResource("5_hveh7")
+
+[sub_resource type="LabelSettings" id="LabelSettings_hveh7"]
+font = ExtResource("5_hveh7")
+
+[sub_resource type="LabelSettings" id="LabelSettings_p7pgw"]
+font = ExtResource("5_hveh7")
+font_size = 24
+
+[sub_resource type="Animation" id="Animation_kjd5s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Option:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("New Species:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_p7pgw"]
+resource_name = "main"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Option:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("New Species:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_87yka"]
+resource_name = "option"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Option:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_27jhl"]
+resource_name = "species"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("New Species:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kuxid"]
+resource_name = "clear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kuxid"]
+_data = {
+&"RESET": SubResource("Animation_kjd5s"),
+&"clear": SubResource("Animation_kuxid"),
+&"main": SubResource("Animation_p7pgw"),
+&"option": SubResource("Animation_87yka"),
+&"species": SubResource("Animation_27jhl")
+}
 
 [node name="World" type="Node2D"]
 
 [node name="CameraComponent" parent="." instance=ExtResource("2_ouhkt")]
+position = Vector2(0, -520)
+zoom = Vector2(0.4, 0.4)
+
+[node name="SeedComponent" parent="." instance=ExtResource("2_x5sp8")]
+
+[node name="MapManager" parent="." node_paths=PackedStringArray("ground_tilemap", "water_tilemap") instance=ExtResource("3_87yka")]
+unique_name_in_owner = true
+ground_tilemap = NodePath("../Ysort/Ground")
+water_tilemap = NodePath("../Ysort/Water")
+
+[node name="Ysort" type="Node2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+
+[node name="Ground" type="TileMapLayer" parent="Ysort"]
+z_index = -1
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAAAAAAFAAUAAAAAAP//AAAFAAUAAAD//wAAAAAFAAUAAAD/////AAAFAAUAAAD+/wAAAAAEAAUAAAD+//7/AAAEAAQAAAAAAP7/AAAFAAQAAAAAAAEAAAAFAAYAAAD+/wEAAAAEAAYAAAD+////AAAEAAUAAAABAAAAAAAGAAUAAAD///7/AAAFAAQAAAABAP7/AAAGAAQAAAABAAEAAAAGAAYAAAD//wEAAAAFAAYAAAABAP//AAAGAAUAAAA=")
+tile_set = SubResource("TileSet_5jr8x")
+
+[node name="Water" type="TileMapLayer" parent="Ysort"]
+modulate = Color(1, 1, 1, 0.588235)
+z_index = -1
+z_as_relative = false
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD+/wEAAAAEAAcAAAD//wEAAAAFAAcAAAAAAAEAAAAFAAcAAAABAAEAAAAGAAcAAAA=")
+tile_set = SubResource("TileSet_5jr8x")
+
+[node name="Creatures" type="Node2D" parent="Ysort"]
+
+[node name="Slime" parent="Ysort/Creatures" instance=ExtResource("5_kjd5s")]
+position = Vector2(0, -30)
+stat_sheet = SubResource("Resource_863yi")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Scroll" type="ColorRect" parent="Background"]
-material = SubResource("ShaderMaterial_5jr8x")
+[node name="ColorRect" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_x5sp8")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Ui" parent="." instance=ExtResource("3_kjd5s")]
+[node name="Menu" type="CanvasLayer" parent="."]
+script = ExtResource("5_87yka")
 
-[node name="SeedComponent" type="Node2D" parent="."]
-script = ExtResource("7_87yka")
+[node name="Main" type="Control" parent="Menu"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Ysort" type="Node2D" parent="."]
-y_sort_enabled = true
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -163.0
+offset_right = 108.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main Title" type="Label" parent="Menu/Main/VBoxContainer"]
 texture_filter = 1
+layout_mode = 2
+text = "Slime Evolution"
+label_settings = SubResource("LabelSettings_87yka")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Slime" parent="Ysort" instance=ExtResource("1_xf6vi")]
-position = Vector2(22, 352)
-collision_mask = 2
-
-[node name="Slime2" parent="Ysort" instance=ExtResource("1_xf6vi")]
-position = Vector2(-213, 277)
-collision_mask = 2
-stat_sheet = SubResource("Resource_0phyg")
-
-[node name="AppleTree" parent="Ysort" instance=ExtResource("4_5jr8x")]
-position = Vector2(298, 5)
-
-[node name="AppleTree2" parent="Ysort" instance=ExtResource("4_5jr8x")]
-position = Vector2(-1270, -515)
-
-[node name="Ground" type="TileMapLayer" parent="Ysort"]
-z_index = -1
+[node name="Blank" type="Label" parent="Menu/Main/VBoxContainer"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAATAAkAAAAGAAYAAAATAAgAAAAGAAUAAAATAAcAAAAGAAUAAAATAAYAAAAGAAUAAAATAAUAAAAGAAUAAAATAAQAAAAGAAUAAAATAAMAAAAGAAUAAAATAAIAAAAGAAUAAAATAAEAAAAGAAUAAAATAAAAAAAGAAUAAAATAP//AAAGAAUAAAATAP7/AAAGAAUAAAATAP3/AAAGAAUAAAATAPz/AAAGAAUAAAATAPv/AAAGAAUAAAATAPr/AAAGAAUAAAATAPn/AAAGAAUAAAATAPj/AAAGAAUAAAATAPf/AAAGAAUAAAATAPb/AAAGAAQAAAASAAkAAAAFAAYAAAASAAgAAAAFAAUAAAASAAcAAAAFAAUAAAASAAYAAAAFAAUAAAASAAUAAAAFAAUAAAASAAQAAAAFAAUAAAASAAMAAAAFAAUAAAASAAIAAAAFAAUAAAASAAEAAAAFAAUAAAASAAAAAAAFAAUAAAASAP//AAAFAAUAAAASAP7/AAAFAAUAAAASAP3/AAAFAAUAAAASAPz/AAAFAAUAAAASAPv/AAAFAAUAAAASAPr/AAAFAAUAAAASAPn/AAAFAAUAAAASAPj/AAAFAAUAAAASAPf/AAAFAAUAAAASAPb/AAAFAAQAAAARAAkAAAAFAAYAAAARAAgAAAAFAAUAAAARAAcAAAAFAAUAAAARAAYAAAAFAAUAAAARAAUAAAAFAAUAAAARAAQAAAAFAAUAAAARAAMAAAAFAAUAAAARAAIAAAAFAAUAAAARAAEAAAAFAAUAAAARAAAAAAAFAAUAAAARAP//AAAFAAUAAAARAP7/AAAFAAUAAAARAP3/AAAFAAUAAAARAPz/AAAFAAUAAAARAPv/AAAFAAUAAAARAPr/AAAFAAUAAAARAPn/AAAFAAUAAAARAPj/AAAFAAUAAAARAPf/AAAFAAUAAAARAPb/AAAFAAQAAAAQAAkAAAAFAAYAAAAQAAgAAAAFAAUAAAAQAAcAAAAFAAUAAAAQAAYAAAAFAAUAAAAQAAUAAAAFAAUAAAAQAAQAAAAFAAUAAAAQAAMAAAAFAAUAAAAQAAIAAAAFAAUAAAAQAAEAAAAFAAUAAAAQAAAAAAAFAAUAAAAQAP//AAAFAAUAAAAQAP7/AAAFAAUAAAAQAP3/AAAFAAUAAAAQAPz/AAAFAAUAAAAQAPv/AAAFAAUAAAAQAPr/AAAFAAUAAAAQAPn/AAAFAAUAAAAQAPj/AAAFAAUAAAAQAPf/AAAFAAUAAAAQAPb/AAAFAAQAAAAPAAkAAAAFAAYAAAAPAAgAAAAFAAUAAAAPAAcAAAAFAAUAAAAPAAYAAAAFAAUAAAAPAAUAAAAFAAUAAAAPAAQAAAAFAAUAAAAPAAMAAAAFAAUAAAAPAAIAAAAFAAUAAAAPAAEAAAAFAAUAAAAPAAAAAAAFAAUAAAAPAP//AAAFAAUAAAAPAP7/AAAFAAUAAAAPAP3/AAAFAAUAAAAPAPz/AAAFAAUAAAAPAPv/AAAFAAUAAAAPAPr/AAAFAAUAAAAPAPn/AAAFAAUAAAAPAPj/AAAFAAUAAAAPAPf/AAAFAAUAAAAPAPb/AAAFAAQAAAAOAAkAAAAFAAYAAAAOAAgAAAAFAAUAAAAOAAcAAAAFAAUAAAAOAAYAAAAFAAUAAAAOAAUAAAAFAAUAAAAOAAQAAAAFAAUAAAAOAAMAAAAFAAUAAAAOAAIAAAAFAAUAAAAOAAEAAAAFAAUAAAAOAAAAAAAFAAUAAAAOAP//AAAFAAUAAAAOAP7/AAAFAAUAAAAOAP3/AAAFAAUAAAAOAPz/AAAFAAUAAAAOAPv/AAAFAAUAAAAOAPr/AAAFAAUAAAAOAPn/AAAFAAUAAAAOAPj/AAAFAAUAAAAOAPf/AAAFAAUAAAAOAPb/AAAFAAQAAAANAAkAAAAFAAYAAAANAAgAAAAFAAUAAAANAAcAAAAFAAUAAAANAAYAAAAFAAUAAAANAAUAAAAFAAUAAAANAAQAAAAFAAUAAAANAAMAAAAFAAUAAAANAAIAAAAFAAUAAAANAAEAAAAFAAUAAAANAAAAAAAFAAUAAAANAP//AAAFAAUAAAANAP7/AAAFAAUAAAANAP3/AAAFAAUAAAANAPz/AAAFAAUAAAANAPv/AAAFAAUAAAANAPr/AAAFAAUAAAANAPn/AAAFAAUAAAANAPj/AAAFAAUAAAANAPf/AAAFAAUAAAANAPb/AAAFAAQAAAAMAAkAAAAFAAYAAAAMAAgAAAAFAAUAAAAMAAcAAAAFAAUAAAAMAAYAAAAFAAUAAAAMAAUAAAAFAAUAAAAMAAQAAAAFAAUAAAAMAAMAAAAFAAUAAAAMAAIAAAAFAAUAAAAMAAEAAAAFAAUAAAAMAAAAAAAFAAUAAAAMAP//AAAFAAUAAAAMAP7/AAAFAAUAAAAMAP3/AAAFAAUAAAAMAPz/AAAFAAUAAAAMAPv/AAAFAAUAAAAMAPr/AAAFAAUAAAAMAPn/AAAFAAUAAAAMAPj/AAAFAAUAAAAMAPf/AAAFAAUAAAAMAPb/AAAFAAQAAAALAAkAAAAFAAYAAAALAAgAAAAFAAUAAAALAAcAAAAFAAUAAAALAAYAAAAFAAUAAAALAAUAAAAFAAUAAAALAAQAAAAFAAUAAAALAAMAAAAFAAUAAAALAAIAAAAFAAUAAAALAAEAAAAFAAUAAAALAAAAAAAFAAUAAAALAP//AAAFAAUAAAALAP7/AAAFAAUAAAALAP3/AAAFAAUAAAALAPz/AAAFAAUAAAALAPv/AAAFAAUAAAALAPr/AAAFAAUAAAALAPn/AAAFAAUAAAALAPj/AAAFAAUAAAALAPf/AAAFAAUAAAALAPb/AAAFAAQAAAAKAAkAAAAFAAYAAAAKAAgAAAAFAAUAAAAKAAcAAAAFAAUAAAAKAAYAAAAFAAUAAAAKAAUAAAAFAAUAAAAKAAQAAAAFAAUAAAAKAAMAAAAFAAUAAAAKAAIAAAAFAAUAAAAKAAEAAAAFAAUAAAAKAAAAAAAFAAUAAAAKAP//AAAFAAUAAAAKAP7/AAAFAAUAAAAKAP3/AAAFAAUAAAAKAPz/AAAFAAUAAAAKAPv/AAAFAAUAAAAKAPr/AAAFAAUAAAAKAPn/AAAFAAUAAAAKAPj/AAAFAAUAAAAKAPf/AAAFAAUAAAAKAPb/AAAFAAQAAAAJAAkAAAAFAAYAAAAJAAgAAAAFAAUAAAAJAAcAAAAFAAUAAAAJAAYAAAAFAAUAAAAJAAUAAAAFAAUAAAAJAAQAAAAFAAUAAAAJAAMAAAAFAAUAAAAJAAIAAAAFAAUAAAAJAAEAAAAFAAUAAAAJAAAAAAAFAAUAAAAJAP//AAAFAAUAAAAJAP7/AAAFAAUAAAAJAP3/AAAFAAUAAAAJAPz/AAAFAAUAAAAJAPv/AAAFAAUAAAAJAPr/AAAFAAUAAAAJAPn/AAAFAAUAAAAJAPj/AAAFAAUAAAAJAPf/AAAFAAUAAAAJAPb/AAAFAAQAAAAIAAkAAAAFAAYAAAAIAAgAAAAFAAUAAAAIAAcAAAAFAAUAAAAIAAYAAAAFAAUAAAAIAAUAAAAFAAUAAAAIAAQAAAAFAAUAAAAIAAMAAAAFAAUAAAAIAAIAAAAFAAUAAAAIAAEAAAAFAAUAAAAIAAAAAAAFAAUAAAAIAP//AAAFAAUAAAAIAP7/AAAFAAUAAAAIAP3/AAAFAAUAAAAIAPz/AAAFAAUAAAAIAPv/AAAFAAUAAAAIAPr/AAAFAAUAAAAIAPn/AAAFAAUAAAAIAPj/AAAFAAUAAAAIAPf/AAAFAAUAAAAIAPb/AAAFAAQAAAAHAAkAAAAFAAYAAAAHAAgAAAAFAAUAAAAHAAcAAAAFAAUAAAAHAAYAAAAFAAUAAAAHAAUAAAAFAAUAAAAHAAQAAAAFAAUAAAAHAAMAAAAFAAUAAAAHAAIAAAAFAAUAAAAHAAEAAAAFAAUAAAAHAAAAAAAFAAUAAAAHAP//AAAFAAUAAAAHAP7/AAAFAAUAAAAHAP3/AAAFAAUAAAAHAPz/AAAFAAUAAAAHAPv/AAAFAAUAAAAHAPr/AAAFAAUAAAAHAPn/AAAFAAUAAAAHAPj/AAAFAAUAAAAHAPf/AAAFAAUAAAAHAPb/AAAFAAQAAAAGAAkAAAAFAAYAAAAGAAgAAAAFAAUAAAAGAAcAAAAFAAUAAAAGAAYAAAAFAAUAAAAGAAUAAAAFAAUAAAAGAAQAAAAFAAUAAAAGAAMAAAAFAAUAAAAGAAIAAAAFAAUAAAAGAAEAAAAFAAUAAAAGAAAAAAAFAAUAAAAGAP//AAAFAAUAAAAGAP7/AAAFAAUAAAAGAP3/AAAFAAUAAAAGAPz/AAAFAAUAAAAGAPv/AAAFAAUAAAAGAPr/AAAFAAUAAAAGAPn/AAAFAAUAAAAGAPj/AAAFAAUAAAAGAPf/AAAFAAUAAAAGAPb/AAAFAAQAAAAFAAkAAAAFAAYAAAAFAAgAAAAFAAUAAAAFAAcAAAAFAAUAAAAFAAYAAAAFAAUAAAAFAAUAAAAFAAUAAAAFAAQAAAAFAAUAAAAFAAMAAAAFAAUAAAAFAAIAAAAFAAUAAAAFAAEAAAAFAAUAAAAFAAAAAAAFAAUAAAAFAP//AAAFAAUAAAAFAP7/AAAFAAUAAAAFAP3/AAAFAAUAAAAFAPz/AAAFAAUAAAAFAPv/AAAFAAUAAAAFAPr/AAAFAAUAAAAFAPn/AAAFAAUAAAAFAPj/AAAFAAUAAAAFAPf/AAAFAAUAAAAFAPb/AAAFAAQAAAAEAAkAAAAFAAYAAAAEAAgAAAAFAAUAAAAEAAcAAAAFAAUAAAAEAAYAAAAFAAUAAAAEAAUAAAAFAAUAAAAEAAQAAAAFAAUAAAAEAAMAAAAFAAUAAAAEAAIAAAAFAAUAAAAEAAEAAAAFAAUAAAAEAAAAAAAFAAUAAAAEAP//AAAFAAUAAAAEAP7/AAAFAAUAAAAEAP3/AAAFAAUAAAAEAPz/AAAFAAUAAAAEAPv/AAAFAAUAAAAEAPr/AAAFAAUAAAAEAPn/AAAFAAUAAAAEAPj/AAAFAAUAAAAEAPf/AAAFAAUAAAAEAPb/AAAFAAQAAAADAAkAAAAFAAYAAAADAAgAAAAFAAUAAAADAAcAAAAFAAUAAAADAAYAAAAFAAUAAAADAAUAAAAFAAUAAAADAAQAAAAFAAUAAAADAAMAAAAFAAUAAAADAAIAAAAFAAUAAAADAAEAAAAFAAUAAAADAAAAAAAFAAUAAAADAP//AAAFAAUAAAADAP7/AAAFAAUAAAADAP3/AAAFAAUAAAADAPz/AAAFAAUAAAADAPv/AAAFAAUAAAADAPr/AAAFAAUAAAADAPn/AAAFAAUAAAADAPj/AAAFAAUAAAADAPf/AAAFAAUAAAADAPb/AAAFAAQAAAACAAkAAAAFAAYAAAACAAgAAAAFAAUAAAACAAcAAAAFAAUAAAACAAYAAAAFAAUAAAACAAUAAAAFAAUAAAACAAQAAAAFAAUAAAACAAMAAAAFAAUAAAACAAIAAAAFAAUAAAACAAEAAAAFAAUAAAACAAAAAAAFAAUAAAACAP//AAAFAAUAAAACAP7/AAAFAAUAAAACAP3/AAAFAAUAAAACAPz/AAAFAAUAAAACAPv/AAAFAAUAAAACAPr/AAAFAAUAAAACAPn/AAAFAAUAAAACAPj/AAAFAAUAAAACAPf/AAAFAAUAAAACAPb/AAAFAAQAAAABAAkAAAAFAAYAAAABAAgAAAAFAAUAAAABAAcAAAAFAAUAAAABAAYAAAAFAAUAAAABAAUAAAAFAAUAAAABAAQAAAAFAAUAAAABAAMAAAAFAAUAAAABAAIAAAAFAAUAAAABAAEAAAAFAAUAAAABAAAAAAAFAAUAAAABAP//AAAFAAUAAAABAP7/AAAFAAUAAAABAP3/AAAFAAUAAAABAPz/AAAFAAUAAAABAPv/AAAFAAUAAAABAPr/AAAFAAUAAAABAPn/AAAFAAUAAAABAPj/AAAFAAUAAAABAPf/AAAFAAUAAAABAPb/AAAFAAQAAAAAAAkAAAAFAAYAAAAAAAgAAAAFAAUAAAAAAAcAAAAFAAUAAAAAAAYAAAAFAAUAAAAAAAUAAAAFAAUAAAAAAAQAAAAFAAUAAAAAAAMAAAAFAAUAAAAAAAIAAAAFAAUAAAAAAAEAAAAFAAUAAAAAAAAAAAAFAAUAAAAAAP//AAAFAAUAAAAAAP7/AAAFAAUAAAAAAP3/AAAFAAUAAAAAAPz/AAAFAAUAAAAAAPv/AAAFAAUAAAAAAPr/AAAFAAUAAAAAAPn/AAAFAAUAAAAAAPj/AAAFAAUAAAAAAPf/AAAFAAUAAAAAAPb/AAAFAAQAAAD//wkAAAAFAAYAAAD//wgAAAAFAAUAAAD//wcAAAAFAAUAAAD//wYAAAAFAAUAAAD//wUAAAAFAAUAAAD//wQAAAAFAAUAAAD//wMAAAAFAAUAAAD//wIAAAAFAAUAAAD//wEAAAAFAAUAAAD//wAAAAAFAAUAAAD/////AAAFAAUAAAD///7/AAAFAAUAAAD///3/AAAFAAUAAAD///z/AAAFAAUAAAD///v/AAAFAAUAAAD///r/AAAFAAUAAAD///n/AAAFAAUAAAD///j/AAAFAAUAAAD///f/AAAFAAUAAAD///b/AAAFAAQAAAD+/wkAAAAFAAYAAAD+/wgAAAAFAAUAAAD+/wcAAAAFAAUAAAD+/wYAAAAFAAUAAAD+/wUAAAAFAAUAAAD+/wQAAAAFAAUAAAD+/wMAAAAFAAUAAAD+/wIAAAAFAAUAAAD+/wEAAAAFAAUAAAD+/wAAAAAFAAUAAAD+////AAAFAAUAAAD+//7/AAAFAAUAAAD+//3/AAAFAAUAAAD+//z/AAAFAAUAAAD+//v/AAAFAAUAAAD+//r/AAAFAAUAAAD+//n/AAAFAAUAAAD+//j/AAAFAAUAAAD+//f/AAAFAAUAAAD+//b/AAAFAAQAAAD9/wkAAAAFAAYAAAD9/wgAAAAFAAUAAAD9/wcAAAAFAAUAAAD9/wYAAAAFAAUAAAD9/wUAAAAFAAUAAAD9/wQAAAAFAAUAAAD9/wMAAAAFAAUAAAD9/wIAAAAFAAUAAAD9/wEAAAAFAAUAAAD9/wAAAAAFAAUAAAD9////AAAFAAUAAAD9//7/AAAFAAUAAAD9//3/AAAFAAUAAAD9//z/AAAFAAUAAAD9//v/AAAFAAUAAAD9//r/AAAFAAUAAAD9//n/AAAFAAUAAAD9//j/AAAFAAUAAAD9//f/AAAFAAUAAAD9//b/AAAFAAQAAAD8/wkAAAAFAAYAAAD8/wgAAAAFAAUAAAD8/wcAAAAFAAUAAAD8/wYAAAAFAAUAAAD8/wUAAAAFAAUAAAD8/wQAAAAFAAUAAAD8/wMAAAAFAAUAAAD8/wIAAAAFAAUAAAD8/wEAAAAFAAUAAAD8/wAAAAAFAAUAAAD8////AAAFAAUAAAD8//7/AAAFAAUAAAD8//3/AAAFAAUAAAD8//z/AAAFAAUAAAD8//v/AAAFAAUAAAD8//r/AAAFAAUAAAD8//n/AAAFAAUAAAD8//j/AAAFAAUAAAD8//f/AAAFAAUAAAD8//b/AAAFAAQAAAD7/wkAAAAFAAYAAAD7/wgAAAAFAAUAAAD7/wcAAAAFAAUAAAD7/wYAAAAFAAUAAAD7/wUAAAAFAAUAAAD7/wQAAAAFAAUAAAD7/wMAAAAFAAUAAAD7/wIAAAAFAAUAAAD7/wEAAAAFAAUAAAD7/wAAAAAFAAUAAAD7////AAAFAAUAAAD7//7/AAAFAAUAAAD7//3/AAAFAAUAAAD7//z/AAAFAAUAAAD7//v/AAAFAAUAAAD7//r/AAAFAAUAAAD7//n/AAAFAAUAAAD7//j/AAAFAAUAAAD7//f/AAAFAAUAAAD7//b/AAAFAAQAAAD6/wkAAAAFAAYAAAD6/wgAAAAFAAUAAAD6/wcAAAAFAAUAAAD6/wYAAAAFAAUAAAD6/wUAAAAFAAUAAAD6/wQAAAAFAAUAAAD6/wMAAAAFAAUAAAD6/wIAAAAFAAUAAAD6/wEAAAAFAAUAAAD6/wAAAAAFAAUAAAD6////AAAFAAUAAAD6//7/AAAFAAUAAAD6//3/AAAFAAUAAAD6//z/AAAFAAUAAAD6//v/AAAFAAUAAAD6//r/AAAFAAUAAAD6//n/AAAFAAUAAAD6//j/AAAFAAUAAAD6//f/AAAFAAUAAAD6//b/AAAFAAQAAAD5/wkAAAAFAAYAAAD5/wgAAAAFAAUAAAD5/wcAAAAFAAUAAAD5/wYAAAAFAAUAAAD5/wUAAAAFAAUAAAD5/wQAAAAFAAUAAAD5/wMAAAAFAAUAAAD5/wIAAAAFAAUAAAD5/wEAAAAFAAUAAAD5/wAAAAAFAAUAAAD5////AAAFAAUAAAD5//7/AAAFAAUAAAD5//3/AAAFAAUAAAD5//z/AAAFAAUAAAD5//v/AAAFAAUAAAD5//r/AAAFAAUAAAD5//n/AAAFAAUAAAD5//j/AAAFAAUAAAD5//f/AAAFAAUAAAD5//b/AAAFAAQAAAD4/wkAAAAFAAYAAAD4/wgAAAAFAAUAAAD4/wcAAAAFAAUAAAD4/wYAAAAFAAUAAAD4/wUAAAAFAAUAAAD4/wQAAAAFAAUAAAD4/wMAAAAFAAUAAAD4/wIAAAAFAAUAAAD4/wEAAAAFAAUAAAD4/wAAAAAFAAUAAAD4////AAAFAAUAAAD4//7/AAAFAAUAAAD4//3/AAAFAAUAAAD4//z/AAAFAAUAAAD4//v/AAAFAAUAAAD4//r/AAAFAAUAAAD4//n/AAAFAAUAAAD4//j/AAAFAAUAAAD4//f/AAAFAAUAAAD4//b/AAAFAAQAAAD3/wkAAAAFAAYAAAD3/wgAAAAFAAUAAAD3/wcAAAAFAAUAAAD3/wYAAAAFAAUAAAD3/wUAAAAFAAUAAAD3/wQAAAAFAAUAAAD3/wMAAAAFAAUAAAD3/wIAAAAFAAUAAAD3/wEAAAAFAAUAAAD3/wAAAAAFAAUAAAD3////AAAFAAUAAAD3//7/AAAFAAUAAAD3//3/AAAFAAUAAAD3//z/AAAFAAUAAAD3//v/AAAFAAUAAAD3//r/AAAFAAUAAAD3//n/AAAFAAUAAAD3//j/AAAFAAUAAAD3//f/AAAFAAUAAAD3//b/AAAFAAQAAAD2/wkAAAAFAAYAAAD2/wgAAAAFAAUAAAD2/wcAAAAFAAUAAAD2/wYAAAAFAAUAAAD2/wUAAAAFAAUAAAD2/wQAAAAFAAUAAAD2/wMAAAAFAAUAAAD2/wIAAAAFAAUAAAD2/wEAAAAFAAUAAAD2/wAAAAAFAAUAAAD2////AAAFAAUAAAD2//7/AAAFAAUAAAD2//3/AAAFAAUAAAD2//z/AAAFAAUAAAD2//v/AAAFAAUAAAD2//r/AAAFAAUAAAD2//n/AAAFAAUAAAD2//j/AAAFAAUAAAD2//f/AAAFAAUAAAD2//b/AAAFAAQAAAD1/wkAAAAFAAYAAAD1/wgAAAAFAAUAAAD1/wcAAAAFAAUAAAD1/wYAAAAFAAUAAAD1/wUAAAAFAAUAAAD1/wQAAAAFAAUAAAD1/wMAAAAFAAUAAAD1/wIAAAAFAAUAAAD1/wEAAAAFAAUAAAD1/wAAAAAFAAUAAAD1////AAAFAAUAAAD1//7/AAAFAAUAAAD1//3/AAAFAAUAAAD1//z/AAAFAAUAAAD1//v/AAAFAAUAAAD1//r/AAAFAAUAAAD1//n/AAAFAAUAAAD1//j/AAAFAAUAAAD1//f/AAAFAAUAAAD1//b/AAAFAAQAAAD0/wkAAAAFAAYAAAD0/wgAAAAFAAUAAAD0/wcAAAAFAAUAAAD0/wYAAAAFAAUAAAD0/wUAAAAFAAUAAAD0/wQAAAAFAAUAAAD0/wMAAAAFAAUAAAD0/wIAAAAFAAUAAAD0/wEAAAAFAAUAAAD0/wAAAAAFAAUAAAD0////AAAFAAUAAAD0//7/AAAFAAUAAAD0//3/AAAFAAUAAAD0//z/AAAFAAUAAAD0//v/AAAFAAUAAAD0//r/AAAFAAUAAAD0//n/AAAFAAUAAAD0//j/AAAFAAUAAAD0//f/AAAFAAUAAAD0//b/AAAFAAQAAADz/wkAAAAFAAYAAADz/wgAAAAFAAUAAADz/wcAAAAFAAUAAADz/wYAAAAFAAUAAADz/wUAAAAFAAUAAADz/wQAAAAFAAUAAADz/wMAAAAFAAUAAADz/wIAAAAFAAUAAADz/wEAAAAFAAUAAADz/wAAAAAFAAUAAADz////AAAFAAUAAADz//7/AAAFAAUAAADz//3/AAAFAAUAAADz//z/AAAFAAUAAADz//v/AAAFAAUAAADz//r/AAAFAAUAAADz//n/AAAFAAUAAADz//j/AAAFAAUAAADz//f/AAAFAAUAAADz//b/AAAFAAQAAADy/wkAAAAFAAYAAADy/wgAAAAFAAUAAADy/wcAAAAFAAUAAADy/wYAAAAFAAUAAADy/wUAAAAFAAUAAADy/wQAAAAFAAUAAADy/wMAAAAFAAUAAADy/wIAAAAFAAUAAADy/wEAAAAFAAUAAADy/wAAAAAFAAUAAADy////AAAFAAUAAADy//7/AAAFAAUAAADy//3/AAAFAAUAAADy//z/AAAFAAUAAADy//v/AAAFAAUAAADy//r/AAAFAAUAAADy//n/AAAFAAUAAADy//j/AAAFAAUAAADy//f/AAAFAAUAAADy//b/AAAFAAQAAADx/wkAAAAFAAYAAADx/wgAAAAFAAUAAADx/wcAAAAFAAUAAADx/wYAAAAFAAUAAADx/wUAAAAFAAUAAADx/wQAAAAFAAUAAADx/wMAAAAFAAUAAADx/wIAAAAFAAUAAADx/wEAAAAFAAUAAADx/wAAAAAFAAUAAADx////AAAFAAUAAADx//7/AAAFAAUAAADx//3/AAAFAAUAAADx//z/AAAFAAUAAADx//v/AAAFAAUAAADx//r/AAAFAAUAAADx//n/AAAFAAUAAADx//j/AAAFAAUAAADx//f/AAAFAAUAAADx//b/AAAFAAQAAADw/wkAAAAFAAYAAADw/wgAAAAFAAUAAADw/wcAAAAFAAUAAADw/wYAAAAFAAUAAADw/wUAAAAFAAUAAADw/wQAAAAFAAUAAADw/wMAAAAFAAUAAADw/wIAAAAFAAUAAADw/wEAAAAFAAUAAADw/wAAAAAFAAUAAADw////AAAFAAUAAADw//7/AAAFAAUAAADw//3/AAAFAAUAAADw//z/AAAFAAUAAADw//v/AAAFAAUAAADw//r/AAAFAAUAAADw//n/AAAFAAUAAADw//j/AAAFAAUAAADw//f/AAAFAAUAAADw//b/AAAFAAQAAADv/wkAAAAFAAYAAADv/wgAAAAFAAUAAADv/wcAAAAFAAUAAADv/wYAAAAFAAUAAADv/wUAAAAFAAUAAADv/wQAAAAFAAUAAADv/wMAAAAFAAUAAADv/wIAAAAFAAUAAADv/wEAAAAFAAUAAADv/wAAAAAFAAUAAADv////AAAFAAUAAADv//7/AAAFAAUAAADv//3/AAAFAAUAAADv//z/AAAFAAUAAADv//v/AAAFAAUAAADv//r/AAAFAAUAAADv//n/AAAFAAUAAADv//j/AAAFAAUAAADv//f/AAAFAAUAAADv//b/AAAFAAQAAADu/wkAAAAFAAYAAADu/wgAAAAFAAUAAADu/wcAAAAFAAUAAADu/wYAAAAFAAUAAADu/wUAAAAFAAUAAADu/wQAAAAFAAUAAADu/wMAAAAFAAUAAADu/wIAAAAFAAUAAADu/wEAAAAFAAUAAADu/wAAAAAFAAUAAADu////AAAFAAUAAADu//7/AAAFAAUAAADu//3/AAAFAAUAAADu//z/AAAFAAUAAADu//v/AAAFAAUAAADu//r/AAAFAAUAAADu//n/AAAFAAUAAADu//j/AAAFAAUAAADu//f/AAAFAAUAAADu//b/AAAFAAQAAADt/wkAAAAEAAYAAADt/wgAAAAEAAUAAADt/wcAAAAEAAUAAADt/wYAAAAEAAUAAADt/wUAAAAEAAUAAADt/wQAAAAEAAUAAADt/wMAAAAEAAUAAADt/wIAAAAEAAUAAADt/wEAAAAEAAUAAADt/wAAAAAEAAUAAADt////AAAEAAUAAADt//7/AAAEAAUAAADt//3/AAAEAAUAAADt//z/AAAEAAUAAADt//v/AAAEAAUAAADt//r/AAAEAAUAAADt//n/AAAEAAUAAADt//j/AAAEAAUAAADt//f/AAAEAAUAAADt//b/AAAEAAQAAAA=")
-tile_set = SubResource("TileSet_5jr8x")
+layout_mode = 2
+label_settings = SubResource("LabelSettings_kjd5s")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Water" type="TileMapLayer" parent="Ysort"]
-z_index = -1
-z_as_relative = false
+[node name="New Species" type="Label" parent="Menu/Main/VBoxContainer"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AADt/wkAAAAEAAcAAADu/wkAAAAFAAcAAADv/wkAAAAFAAcAAADw/wkAAAAFAAcAAADx/wkAAAAFAAcAAADy/wkAAAAFAAcAAADz/wkAAAAFAAcAAAD0/wkAAAAFAAcAAAD1/wkAAAAFAAcAAAD2/wkAAAAFAAcAAAD3/wkAAAAFAAcAAAD4/wkAAAAFAAcAAAD5/wkAAAAFAAcAAAD6/wkAAAAFAAcAAAD7/wkAAAAFAAcAAAD8/wkAAAAFAAcAAAD9/wkAAAAFAAcAAAD+/wkAAAAFAAcAAAD//wkAAAAFAAcAAAAAAAkAAAAFAAcAAAABAAkAAAAFAAcAAAACAAkAAAAFAAcAAAADAAkAAAAFAAcAAAAEAAkAAAAFAAcAAAAFAAkAAAAFAAcAAAAGAAkAAAAFAAcAAAAHAAkAAAAFAAcAAAAIAAkAAAAFAAcAAAAJAAkAAAAFAAcAAAAKAAkAAAAFAAcAAAALAAkAAAAFAAcAAAAMAAkAAAAFAAcAAAANAAkAAAAFAAcAAAAOAAkAAAAFAAcAAAAPAAkAAAAFAAcAAAAQAAkAAAAFAAcAAAARAAkAAAAFAAcAAAASAAkAAAAFAAcAAAATAAkAAAAGAAcAAAA=")
-tile_set = SubResource("TileSet_5jr8x")
+layout_mode = 2
+text = "New Species"
+label_settings = SubResource("LabelSettings_27jhl")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="WaterSource" parent="." instance=ExtResource("8_kjd5s")]
+[node name="Button" type="Button" parent="Menu/Main/VBoxContainer/New Species"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Options" type="Label" parent="Menu/Main/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_27jhl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Menu/Main/VBoxContainer/Options"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Option" type="Control" parent="Menu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Option"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -164.0
+offset_right = 108.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main Title" type="Label" parent="Menu/Option/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_87yka")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Label" parent="Menu/Option/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Back"
+label_settings = SubResource("LabelSettings_hveh7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Menu/Option/VBoxContainer/Back"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Blank" type="Label" parent="Menu/Option/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+label_settings = SubResource("LabelSettings_87yka")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="New Species" type="Label" parent="Menu/Option/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Blank"
+label_settings = SubResource("LabelSettings_27jhl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Menu/Option/VBoxContainer/New Species"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="New Species" type="Control" parent="Menu"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/New Species"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -163.0
+offset_right = 108.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main Title" type="Label" parent="Menu/New Species/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "New Species"
+label_settings = SubResource("LabelSettings_87yka")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Label" parent="Menu/New Species/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Back"
+label_settings = SubResource("LabelSettings_hveh7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Menu/New Species/VBoxContainer/Back"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Blank" type="Label" parent="Menu/New Species/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+label_settings = SubResource("LabelSettings_87yka")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Species Settings" type="Control" parent="Menu/New Species/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Menu/New Species/VBoxContainer/Species Settings"]
+texture_filter = 1
+layout_mode = 0
+offset_top = -24.0
+offset_right = 216.0
+text = "Species Settings"
+label_settings = SubResource("LabelSettings_p7pgw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Population" type="Control" parent="Menu/New Species/VBoxContainer/Species Settings"]
+anchors_preset = 0
+offset_right = 222.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="Menu/New Species/VBoxContainer/Species Settings/Population"]
+texture_filter = 1
+layout_mode = 2
+offset_left = -44.0
+offset_top = 12.0
+offset_right = 40.0
+offset_bottom = 28.0
+text = "Population :"
+label_settings = SubResource("LabelSettings_27jhl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pop" type="HSlider" parent="Menu/New Species/VBoxContainer/Species Settings/Population"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 44.0
+offset_top = 11.0
+offset_right = 187.0
+offset_bottom = 27.0
+min_value = 2.0
+value = 2.0
+rounded = true
+
+[node name="PopCount" type="Label" parent="Menu/New Species/VBoxContainer/Species Settings/Population"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 189.0
+offset_top = 2.0
+offset_right = 229.0
+offset_bottom = 37.0
+text = "2.0"
+label_settings = SubResource("LabelSettings_27jhl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Blank_2" type="Label" parent="Menu/New Species/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+label_settings = SubResource("LabelSettings_87yka")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Blank_3" type="Label" parent="Menu/New Species/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+label_settings = SubResource("LabelSettings_87yka")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="World Settings" type="Control" parent="Menu/New Species/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Menu/New Species/VBoxContainer/World Settings"]
+texture_filter = 1
+layout_mode = 2
+offset_top = -24.0
+offset_right = 216.0
+text = "World Settings"
+label_settings = SubResource("LabelSettings_p7pgw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/New Species/VBoxContainer/World Settings"]
+layout_mode = 2
+offset_right = 52.0
+offset_bottom = 40.0
+
+[node name="Size" type="Label" parent="Menu/New Species/VBoxContainer/World Settings/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Size :"
+label_settings = SubResource("LabelSettings_27jhl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/New Species/VBoxContainer/World Settings/HBoxContainer"]
+layout_mode = 2
+
+[node name="Sliders" type="Control" parent="Menu/New Species/VBoxContainer/World Settings/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="X" type="HSlider" parent="Menu/New Species/VBoxContainer/World Settings/HBoxContainer/VBoxContainer/Sliders"]
+texture_filter = 1
+layout_mode = 2
+offset_top = 4.0
+offset_right = 143.0
+offset_bottom = 20.0
+min_value = 1.0
+value = 10.0
+rounded = true
+
+[node name="XCount" type="Label" parent="Menu/New Species/VBoxContainer/World Settings/HBoxContainer/VBoxContainer/Sliders"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 145.0
+offset_top = 1.0
+offset_right = 185.0
+offset_bottom = 24.0
+text = "10.0
+"
+label_settings = SubResource("LabelSettings_27jhl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Y" type="HSlider" parent="Menu/New Species/VBoxContainer/World Settings/HBoxContainer/VBoxContainer/Sliders"]
+texture_filter = 1
+layout_mode = 2
+offset_top = 24.0
+offset_right = 143.0
+offset_bottom = 40.0
+min_value = 1.0
+value = 10.0
+
+[node name="YCount" type="Label" parent="Menu/New Species/VBoxContainer/World Settings/HBoxContainer/VBoxContainer/Sliders"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 145.0
+offset_top = 21.0
+offset_right = 185.0
+offset_bottom = 44.0
+text = "10.0"
+label_settings = SubResource("LabelSettings_27jhl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Blank_4" type="Label" parent="Menu/New Species/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+label_settings = SubResource("LabelSettings_87yka")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Blank_5" type="Label" parent="Menu/New Species/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+label_settings = SubResource("LabelSettings_87yka")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Create" type="Label" parent="Menu/New Species/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Create"
+label_settings = SubResource("LabelSettings_hveh7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Menu/New Species/VBoxContainer/Create"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
+libraries = {
+&"": SubResource("AnimationLibrary_kuxid")
+}
+autoplay = "main"
+
+[connection signal="pressed" from="Menu/Main/VBoxContainer/New Species/Button" to="Menu/AnimationPlayer" method="play" binds= ["species"]]
+[connection signal="pressed" from="Menu/Main/VBoxContainer/Options/Button" to="Menu/AnimationPlayer" method="play" binds= ["option"]]
+[connection signal="pressed" from="Menu/Option/VBoxContainer/Back/Button" to="Menu/AnimationPlayer" method="play" binds= ["main"]]
+[connection signal="pressed" from="Menu/New Species/VBoxContainer/Back/Button" to="Menu/AnimationPlayer" method="play" binds= ["main"]]
+[connection signal="value_changed" from="Menu/New Species/VBoxContainer/Species Settings/Population/Pop" to="Menu" method="_on_pop_value_changed"]
+[connection signal="value_changed" from="Menu/New Species/VBoxContainer/World Settings/HBoxContainer/VBoxContainer/Sliders/X" to="Menu" method="_on_x_value_changed"]
+[connection signal="value_changed" from="Menu/New Species/VBoxContainer/World Settings/HBoxContainer/VBoxContainer/Sliders/Y" to="Menu" method="_on_y_value_changed"]
+[connection signal="pressed" from="Menu/New Species/VBoxContainer/Create/Button" to="Menu" method="create"]

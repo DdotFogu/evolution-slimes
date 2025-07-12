@@ -2,6 +2,9 @@
 extends Node2D
 class_name vision_component
 
+@export_category("Refrences")
+@export var growth_component : growth_component
+
 @export_category("Values")
 @export var enabled : bool = true
 @export_flags_2d_physics var searchable_items
@@ -10,8 +13,11 @@ var vision : Dictionary = {"Fruit" : []}
 @onready var vision_range : float = owner.stat_sheet.action_stats.vision_range
 @onready var vision_node : Area2D = %VisionNode
 
+func _ready() -> void: vision_node.get_node("Range").shape = CircleShape2D.new()
+
 func _process(delta: float) -> void:
-	vision_range = owner.stat_sheet.action_stats.vision_range
+	
+	vision_range = (owner.stat_sheet.action_stats.vision_range * clampf(growth_component.growth + 0.25, 0.0, 1.0))
 	if enabled:
 		vision_node.get_node("Range").shape.radius = vision_range
 		vision_node.collision_mask = searchable_items
@@ -37,7 +43,7 @@ func closest_source(type : String = "Fruit") -> Node2D:
 	if source.size() == 0: return null
 	source = source[type].pick_random()
 	
-	if !source: print("IM AM RETURNING NULL"); return null
+	if !source: return null
 	return source
 
 func sort_objects(types: Array[String]) -> Dictionary:

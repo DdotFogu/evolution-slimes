@@ -6,13 +6,14 @@ class_name food_producer
 @export var food_scene : PackedScene
 @export var production_time : int = 10
 
+@onready var timer : Timer = Timer.new()
+
 var potential_spawns : Array[Marker2D]
 
 func _ready() -> void:
-	var timer = Timer.new()
 	timer.timeout.connect(spawn_food)
 	timer.autostart = true
-	timer.wait_time = production_time
+	timer.wait_time = production_time + Global.rng.randf_range(-10, 10)
 	add_child(timer)
 	
 	spawn_food()
@@ -32,3 +33,5 @@ func spawn_food():
 	food.position = spawn_node.position
 	
 	spawn_node.add_child(food)
+	
+	timer.wait_time = production_time + Global.rng.randf_range(-10, 10)

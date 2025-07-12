@@ -5,5 +5,6 @@ class_name StatSheet
 @export var health_stats : HealthStats
 @export var action_stats : ActionStats
 @export var mating_stats : MatingStats
+@export var growth_stats : GrowthStats
 @export var diet_stats : DietStats
 @export var movement_stats : MovementStats

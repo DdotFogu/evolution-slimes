@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://d8vlhvfa6yji"]
+
+[ext_resource type="Script" uid="uid://w2uq4rqxcnc8" path="res://Scripts/Components/growth_component.gd" id="1_cmhi0"]
+
+[node name="GrowthComponent" type="Node"]
+script = ExtResource("1_cmhi0")
+
+[node name="GrowTimer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[connection signal="timeout" from="GrowTimer" to="." method="increase_growth"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://clvnyppangko0" path="res://Scripts/Classes/food_base.gd" id="1_mtgt5"]
 [ext_resource type="Texture2D" uid="uid://4hns6hp7ejur" path="res://Assets/Sprites/Slimes/Slime.png" id="1_rhkef"]
-[ext_resource type="Script" uid="uid://w2uq4rqxcnc8" path="res://Scripts/Components/growth_component.gd" id="3_ror6n"]
+[ext_resource type="Script" uid="uid://bsmveele1pgxm" path="res://Scripts/Components/visual_component.gd" id="2_ror6n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mtgt5"]
 radius = 15.0
@@ -13,11 +13,11 @@ collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_mtgt5")
 grow_time = 45
-life_time = 90
-rot_time = 30
-hunger_restoration = 3
 
-[node name="SpriteComponent" type="Sprite2D" parent="."]
+[node name="VisualComponent" type="Node2D" parent="."]
+script = ExtResource("2_ror6n")
+
+[node name="SpriteComponent" type="Sprite2D" parent="VisualComponent"]
 unique_name_in_owner = true
 texture_filter = 1
 texture = ExtResource("1_rhkef")
@@ -26,6 +26,3 @@ region_rect = Rect2(110, 265, 25, 30)
 
 [node name="CollisionComponet" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mtgt5")
-
-[node name="GrowthComponent" type="Node" parent="."]
-script = ExtResource("3_ror6n")

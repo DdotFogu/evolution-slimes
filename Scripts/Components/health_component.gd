@@ -16,5 +16,10 @@ func take_damage(amount : int, hideDamage : bool = false):
 		die()
 
 func die():
+	await get_tree().create_timer(0.1).timeout
+	
+	print("A SLIME HAS DIED")
+	Global.slime_pop -= 1
+	
 	death.emit()
 	owner.queue_free()

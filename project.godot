@@ -18,6 +18,7 @@ config/icon="uid://4hns6hp7ejur"
 [autoload]
 
 Global="*res://Scripts/Global/global.gd"
+Info="*res://Scenes/HUD/ui.tscn"
 
 [display]
 

@@ -3,6 +3,7 @@ class_name wander
 
 @export_category("Refrence")
 @export var pathfinding_component: pathfinding_component
+@export var growth_component: growth_component
 
 @export_category("Values")
 @export var wander_radius: float = 500.0
@@ -26,7 +27,7 @@ func enter() -> void:
 	disable_timer(false)
 
 func exit() -> void:
-	wander_timer.stop()
+	disable_timer()
 	fallback_timer.stop()
 	body.velocity = Vector2.ZERO
 
@@ -34,10 +35,10 @@ func physics_update(_delta: float) -> void:
 	if wander_timer.paused == true: return
 	
 	if body.global_position.distance_to(wander_position) < goto_margin:
-		state_machine.current_state = %Idle
+		body.velocity = body.velocity.lerp(Vector2.ZERO, body.stat_sheet.movement_stats.friction)
 	else:
 		var target_dir = pathfinding_component.direction_to_target(wander_position)
-		body.velocity = body.velocity.lerp(target_dir * body.stat_sheet.movement_stats.speed, body.stat_sheet.movement_stats.acceleration)
+		body.velocity = body.velocity.lerp(target_dir * (body.stat_sheet.movement_stats.speed * growth_component.growth), body.stat_sheet.movement_stats.acceleration)
 		
 		%ArrowTest.rotation = target_dir.angle()
 	
@@ -47,8 +48,6 @@ func physics_update(_delta: float) -> void:
 func new_wander_position(force_update : bool = false) -> void:
 	if !force_update:
 		if body.global_position.distance_to(wander_position) > goto_margin: return
-	
-	state_machine.current_state = self
 	
 	var new_target_location = pathfinding_component.get_nearby_position(wander_radius)
 	while !pathfinding_component.los_check(new_target_location, body.global_position, 18):

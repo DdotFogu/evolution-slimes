@@ -1,3 +1,4 @@
+@icon("res://Assets/IconGodotNode/node/icon_dice.png")
 extends Node2D
 class_name seed
 

@@ -7,7 +7,6 @@ enum GENDERS {MALE, FEMALE}
 
 #General
 @export var gender = GENDERS.MALE
-@export var is_fertile : bool = true
 @export_range(0, 500) var attractiveness : float = 100.0 # 100 is default value
 
 #Male

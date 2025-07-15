@@ -7,6 +7,5 @@ class_name base_npc
 var parents : Dictionary
 var children : Array
 
-func _physics_process(_delta): if !stat_sheet : return
-
-func _ready() -> void: Global.slime_pop += 1
+func _physics_process(_delta): 
+	if !stat_sheet : return

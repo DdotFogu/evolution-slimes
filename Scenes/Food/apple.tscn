@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://txok652qn8js"]
+[gd_scene load_steps=4 format=3 uid="uid://txok652qn8js"]
 
 [ext_resource type="Script" uid="uid://clvnyppangko0" path="res://Scripts/Classes/food_base.gd" id="1_mtgt5"]
 [ext_resource type="Texture2D" uid="uid://4hns6hp7ejur" path="res://Assets/Sprites/Slimes/Slime.png" id="1_rhkef"]
-[ext_resource type="Script" uid="uid://bsmveele1pgxm" path="res://Scripts/Components/visual_component.gd" id="2_ror6n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mtgt5"]
 radius = 15.0
@@ -15,7 +14,6 @@ script = ExtResource("1_mtgt5")
 grow_time = 45
 
 [node name="VisualComponent" type="Node2D" parent="."]
-script = ExtResource("2_ror6n")
 
 [node name="SpriteComponent" type="Sprite2D" parent="VisualComponent"]
 unique_name_in_owner = true

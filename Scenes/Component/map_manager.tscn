@@ -1,8 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b1fnbjw2www8p"]
 
-[ext_resource type="Script" uid="uid://cf6gu0xwd8wm4" path="res://Scenes/World/map_manager.gd" id="1_ebjbx"]
+[ext_resource type="Script" uid="uid://cf6gu0xwd8wm4" path="res://Scripts/Components/map_manager.gd" id="1_ebjbx"]
 
-[node name="MapManager" type="Node2D" node_paths=PackedStringArray("ground_tilemap", "water_tilemap")]
+[node name="MapManager" type="Node2D"]
 script = ExtResource("1_ebjbx")
-ground_tilemap = NodePath("")
-water_tilemap = NodePath("")

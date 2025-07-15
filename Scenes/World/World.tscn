@@ -1,22 +1,14 @@
-[gd_scene load_steps=37 format=4 uid="uid://c86ksj3kxf4xl"]
+[gd_scene load_steps=14 format=3 uid="uid://c86ksj3kxf4xl"]
 
 [ext_resource type="PackedScene" uid="uid://bl6ldc0qkyg3" path="res://Scenes/Component/camera_component.tscn" id="2_ouhkt"]
 [ext_resource type="PackedScene" uid="uid://sotyh3vmciew" path="res://Scenes/Component/seed_component.tscn" id="2_x5sp8"]
 [ext_resource type="PackedScene" uid="uid://b1fnbjw2www8p" path="res://Scenes/Component/map_manager.tscn" id="3_87yka"]
 [ext_resource type="Shader" uid="uid://d2nuvo2k75of3" path="res://Shaders/scrolling_bg.gdshader" id="3_ouhkt"]
 [ext_resource type="Texture2D" uid="uid://4hns6hp7ejur" path="res://Assets/Sprites/Slimes/Slime.png" id="5_27jhl"]
-[ext_resource type="Script" uid="uid://dt8kx0ogni502" path="res://Scripts/Ui/menu.gd" id="5_87yka"]
-[ext_resource type="FontFile" uid="uid://ddyr1wwb5byj1" path="res://Assets/Fonts/Vaticanus-G3yVG.ttf" id="5_hveh7"]
-[ext_resource type="PackedScene" uid="uid://cliqmeglrrpb8" path="res://Scenes/Characters/Slimes/slime.tscn" id="5_kjd5s"]
-[ext_resource type="Script" uid="uid://cld53y2v7ce22" path="res://Scripts/Classes/stats/Action Stats.gd" id="6_0phyg"]
-[ext_resource type="Script" uid="uid://bnegr4jaj148f" path="res://Scripts/Classes/stats/Diet Stats.gd" id="7_30wmc"]
-[ext_resource type="Script" uid="uid://cggoonwmx4efq" path="res://Scripts/Classes/stats/Growth Stats.gd" id="8_nfd2q"]
-[ext_resource type="Script" uid="uid://17vk0qsshlcu" path="res://Scripts/Classes/stats/Health Stats.gd" id="9_liy54"]
-[ext_resource type="Script" uid="uid://bdsmn6e6mhnl7" path="res://Scripts/Classes/stats/Mating Stats.gd" id="10_c1bjq"]
-[ext_resource type="Script" uid="uid://btt00psp2ndbv" path="res://Scripts/Classes/stats/Movement Stats.gd" id="11_7n4rk"]
-[ext_resource type="Script" uid="uid://d2ymegg2fohlx" path="res://Scripts/Classes/stats/Stat Sheet.gd" id="12_jclsg"]
+[ext_resource type="PackedScene" uid="uid://ectun0ugjgw8" path="res://Scenes/HUD/menu.tscn" id="6_hveh7"]
+[ext_resource type="FontFile" uid="uid://ddyr1wwb5byj1" path="res://Assets/Fonts/Vaticanus-G3yVG.ttf" id="7_87yka"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hveh7"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p7pgw"]
 texture = ExtResource("5_27jhl")
 texture_region_size = Vector2i(80, 80)
 4:2/0 = 0
@@ -480,63 +472,7 @@ terrain_set_0/terrain_0/name = "Ground 0"
 terrain_set_0/terrain_0/color = Color(1, 0, 0.25098, 1)
 terrain_set_0/terrain_1/name = "Water 1"
 terrain_set_0/terrain_1/color = Color(0.68569, 0.00105156, 0.794158, 1)
-sources/0 = SubResource("TileSetAtlasSource_hveh7")
-
-[sub_resource type="Resource" id="Resource_lqys3"]
-script = ExtResource("6_0phyg")
-vision_range = 1500.0
-action_range = 200.0
-metadata/_custom_type_script = "uid://cld53y2v7ce22"
-
-[sub_resource type="Resource" id="Resource_qs546"]
-script = ExtResource("7_30wmc")
-diet = Array[String](["Fruit"])
-hunger = 100
-hunger_decay = 0.0
-hunger_threshold = 0.5
-thrist = 100
-thrist_decay = 0.0
-thrist_threshold = 0.5
-metadata/_custom_type_script = "uid://bnegr4jaj148f"
-
-[sub_resource type="Resource" id="Resource_41ig8"]
-script = ExtResource("8_nfd2q")
-inital_growth = 1.0
-growth_speed = 0.0001
-metadata/_custom_type_script = "uid://cggoonwmx4efq"
-
-[sub_resource type="Resource" id="Resource_hlwfy"]
-script = ExtResource("9_liy54")
-health = 5
-metadata/_custom_type_script = "uid://17vk0qsshlcu"
-
-[sub_resource type="Resource" id="Resource_ecorn"]
-script = ExtResource("10_c1bjq")
-reproduction_cooldown = 0.0
-gender = 0
-is_fertile = true
-attractiveness = 100.0
-sex_drive = 0.0
-offspring_count = 1
-gestation_period = 120.0
-metadata/_custom_type_script = "uid://bdsmn6e6mhnl7"
-
-[sub_resource type="Resource" id="Resource_uxwvq"]
-script = ExtResource("11_7n4rk")
-speed = 200
-friction = 0.1
-acceleration = 0.1
-metadata/_custom_type_script = "uid://btt00psp2ndbv"
-
-[sub_resource type="Resource" id="Resource_863yi"]
-script = ExtResource("12_jclsg")
-health_stats = SubResource("Resource_hlwfy")
-action_stats = SubResource("Resource_lqys3")
-mating_stats = SubResource("Resource_ecorn")
-growth_stats = SubResource("Resource_41ig8")
-diet_stats = SubResource("Resource_qs546")
-movement_stats = SubResource("Resource_uxwvq")
-metadata/_custom_type_script = "uid://d2ymegg2fohlx"
+sources/0 = SubResource("TileSetAtlasSource_p7pgw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x5sp8"]
 shader = ExtResource("3_ouhkt")
@@ -547,235 +483,30 @@ shader_parameter/line_count = 20.0
 shader_parameter/speed = 10.0
 shader_parameter/blur = 0.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_87yka"]
-font = ExtResource("5_hveh7")
-font_size = 32
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hveh7"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101961, 0.101961, 0.101961, 1)
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_87yka"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_hveh7")
 
 [sub_resource type="LabelSettings" id="LabelSettings_kjd5s"]
-font = ExtResource("5_hveh7")
-font_size = 12
-
-[sub_resource type="LabelSettings" id="LabelSettings_27jhl"]
-font = ExtResource("5_hveh7")
-
-[sub_resource type="LabelSettings" id="LabelSettings_hveh7"]
-font = ExtResource("5_hveh7")
-
-[sub_resource type="LabelSettings" id="LabelSettings_p7pgw"]
-font = ExtResource("5_hveh7")
-font_size = 24
-
-[sub_resource type="Animation" id="Animation_kjd5s"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Option:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Main:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("New Species:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_p7pgw"]
-resource_name = "main"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Main:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Option:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("New Species:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_87yka"]
-resource_name = "option"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Option:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Main:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_27jhl"]
-resource_name = "species"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("New Species:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Main:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_kuxid"]
-resource_name = "clear"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kuxid"]
-_data = {
-&"RESET": SubResource("Animation_kjd5s"),
-&"clear": SubResource("Animation_kuxid"),
-&"main": SubResource("Animation_p7pgw"),
-&"option": SubResource("Animation_87yka"),
-&"species": SubResource("Animation_27jhl")
-}
+font = ExtResource("7_87yka")
 
 [node name="World" type="Node2D"]
 
 [node name="CameraComponent" parent="." instance=ExtResource("2_ouhkt")]
+unique_name_in_owner = true
 position = Vector2(0, -520)
-zoom = Vector2(0.4, 0.4)
+ignore_rotation = false
+zoom = Vector2(0.8, 0.8)
 
 [node name="SeedComponent" parent="." instance=ExtResource("2_x5sp8")]
+unique_name_in_owner = true
 
 [node name="MapManager" parent="." node_paths=PackedStringArray("ground_tilemap", "water_tilemap") instance=ExtResource("3_87yka")]
 unique_name_in_owner = true
@@ -789,7 +520,6 @@ texture_filter = 1
 [node name="Ground" type="TileMapLayer" parent="Ysort"]
 z_index = -1
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAAAAAAAAAFAAUAAAAAAP//AAAFAAUAAAD//wAAAAAFAAUAAAD/////AAAFAAUAAAD+/wAAAAAEAAUAAAD+//7/AAAEAAQAAAAAAP7/AAAFAAQAAAAAAAEAAAAFAAYAAAD+/wEAAAAEAAYAAAD+////AAAEAAUAAAABAAAAAAAGAAUAAAD///7/AAAFAAQAAAABAP7/AAAGAAQAAAABAAEAAAAGAAYAAAD//wEAAAAFAAYAAAABAP//AAAGAAUAAAA=")
 tile_set = SubResource("TileSet_5jr8x")
 
 [node name="Water" type="TileMapLayer" parent="Ysort"]
@@ -797,14 +527,15 @@ modulate = Color(1, 1, 1, 0.588235)
 z_index = -1
 z_as_relative = false
 texture_filter = 1
-tile_map_data = PackedByteArray("AAD+/wEAAAAEAAcAAAD//wEAAAAFAAcAAAAAAAEAAAAFAAcAAAABAAEAAAAGAAcAAAA=")
 tile_set = SubResource("TileSet_5jr8x")
 
 [node name="Creatures" type="Node2D" parent="Ysort"]
 
-[node name="Slime" parent="Ysort/Creatures" instance=ExtResource("5_kjd5s")]
-position = Vector2(0, -30)
-stat_sheet = SubResource("Resource_863yi")
+[node name="Water Sources" type="Node2D" parent="Ysort"]
+
+[node name="Food Sources" type="Node2D" parent="Ysort"]
+
+[node name="Other" type="Node2D" parent="Ysort"]
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
@@ -817,401 +548,44 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Menu" type="CanvasLayer" parent="."]
-script = ExtResource("5_87yka")
+[node name="Menu" parent="." instance=ExtResource("6_hveh7")]
+unique_name_in_owner = true
 
-[node name="Main" type="Control" parent="Menu"]
+[node name="Graphing" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Main"]
-layout_mode = 1
+[node name="PanelContainer" type="PanelContainer" parent="Graphing"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -108.0
-offset_top = -163.0
-offset_right = 108.0
-offset_bottom = -75.0
+offset_left = -396.5
+offset_top = -267.5
+offset_right = 396.5
+offset_bottom = 267.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_87yka")
 
-[node name="Main Title" type="Label" parent="Menu/Main/VBoxContainer"]
+[node name="GraphLine" type="Line2D" parent="Graphing/PanelContainer"]
+position = Vector2(0, 535.5)
+points = PackedVector2Array(0, 0, 79.805, -86.33)
+width = 5.0
+
+[node name="YHBox" type="VBoxContainer" parent="Graphing"]
+offset_left = 133.0
+offset_top = 57.0
+offset_right = 173.0
+offset_bottom = 592.0
+alignment = 2
+
+[node name="XCount" type="Label" parent="Graphing/YHBox"]
 texture_filter = 1
 layout_mode = 2
-text = "Slime Evolution"
-label_settings = SubResource("LabelSettings_87yka")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Blank" type="Label" parent="Menu/Main/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
+text = "0.0"
 label_settings = SubResource("LabelSettings_kjd5s")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="New Species" type="Label" parent="Menu/Main/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-text = "New Species"
-label_settings = SubResource("LabelSettings_27jhl")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Menu/Main/VBoxContainer/New Species"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="Options" type="Label" parent="Menu/Main/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-text = "Options"
-label_settings = SubResource("LabelSettings_27jhl")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Menu/Main/VBoxContainer/Options"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="Option" type="Control" parent="Menu"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Option"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -108.0
-offset_top = -164.0
-offset_right = 108.0
-offset_bottom = -56.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Main Title" type="Label" parent="Menu/Option/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-text = "Options"
-label_settings = SubResource("LabelSettings_87yka")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Back" type="Label" parent="Menu/Option/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-text = "Back"
-label_settings = SubResource("LabelSettings_hveh7")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Menu/Option/VBoxContainer/Back"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="Blank" type="Label" parent="Menu/Option/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-label_settings = SubResource("LabelSettings_87yka")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="New Species" type="Label" parent="Menu/Option/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-text = "Blank"
-label_settings = SubResource("LabelSettings_27jhl")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Menu/Option/VBoxContainer/New Species"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="New Species" type="Control" parent="Menu"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/New Species"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -108.0
-offset_top = -163.0
-offset_right = 108.0
-offset_bottom = 97.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Main Title" type="Label" parent="Menu/New Species/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-text = "New Species"
-label_settings = SubResource("LabelSettings_87yka")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Back" type="Label" parent="Menu/New Species/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-text = "Back"
-label_settings = SubResource("LabelSettings_hveh7")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Menu/New Species/VBoxContainer/Back"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="Blank" type="Label" parent="Menu/New Species/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-label_settings = SubResource("LabelSettings_87yka")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Species Settings" type="Control" parent="Menu/New Species/VBoxContainer"]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="Menu/New Species/VBoxContainer/Species Settings"]
-texture_filter = 1
-layout_mode = 0
-offset_top = -24.0
-offset_right = 216.0
-text = "Species Settings"
-label_settings = SubResource("LabelSettings_p7pgw")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Population" type="Control" parent="Menu/New Species/VBoxContainer/Species Settings"]
-anchors_preset = 0
-offset_right = 222.0
-offset_bottom = 40.0
-
-[node name="Title" type="Label" parent="Menu/New Species/VBoxContainer/Species Settings/Population"]
-texture_filter = 1
-layout_mode = 2
-offset_left = -44.0
-offset_top = 12.0
-offset_right = 40.0
-offset_bottom = 28.0
-text = "Population :"
-label_settings = SubResource("LabelSettings_27jhl")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Pop" type="HSlider" parent="Menu/New Species/VBoxContainer/Species Settings/Population"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 44.0
-offset_top = 11.0
-offset_right = 187.0
-offset_bottom = 27.0
-min_value = 2.0
-value = 2.0
-rounded = true
-
-[node name="PopCount" type="Label" parent="Menu/New Species/VBoxContainer/Species Settings/Population"]
-unique_name_in_owner = true
-texture_filter = 1
-layout_mode = 0
-offset_left = 189.0
-offset_top = 2.0
-offset_right = 229.0
-offset_bottom = 37.0
-text = "2.0"
-label_settings = SubResource("LabelSettings_27jhl")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Blank_2" type="Label" parent="Menu/New Species/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-label_settings = SubResource("LabelSettings_87yka")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Blank_3" type="Label" parent="Menu/New Species/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-label_settings = SubResource("LabelSettings_87yka")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="World Settings" type="Control" parent="Menu/New Species/VBoxContainer"]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="Menu/New Species/VBoxContainer/World Settings"]
-texture_filter = 1
-layout_mode = 2
-offset_top = -24.0
-offset_right = 216.0
-text = "World Settings"
-label_settings = SubResource("LabelSettings_p7pgw")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Menu/New Species/VBoxContainer/World Settings"]
-layout_mode = 2
-offset_right = 52.0
-offset_bottom = 40.0
-
-[node name="Size" type="Label" parent="Menu/New Species/VBoxContainer/World Settings/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-text = "Size :"
-label_settings = SubResource("LabelSettings_27jhl")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/New Species/VBoxContainer/World Settings/HBoxContainer"]
-layout_mode = 2
-
-[node name="Sliders" type="Control" parent="Menu/New Species/VBoxContainer/World Settings/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="X" type="HSlider" parent="Menu/New Species/VBoxContainer/World Settings/HBoxContainer/VBoxContainer/Sliders"]
-texture_filter = 1
-layout_mode = 2
-offset_top = 4.0
-offset_right = 143.0
-offset_bottom = 20.0
-min_value = 1.0
-value = 10.0
-rounded = true
-
-[node name="XCount" type="Label" parent="Menu/New Species/VBoxContainer/World Settings/HBoxContainer/VBoxContainer/Sliders"]
-unique_name_in_owner = true
-texture_filter = 1
-layout_mode = 0
-offset_left = 145.0
-offset_top = 1.0
-offset_right = 185.0
-offset_bottom = 24.0
-text = "10.0
-"
-label_settings = SubResource("LabelSettings_27jhl")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Y" type="HSlider" parent="Menu/New Species/VBoxContainer/World Settings/HBoxContainer/VBoxContainer/Sliders"]
-texture_filter = 1
-layout_mode = 2
-offset_top = 24.0
-offset_right = 143.0
-offset_bottom = 40.0
-min_value = 1.0
-value = 10.0
-
-[node name="YCount" type="Label" parent="Menu/New Species/VBoxContainer/World Settings/HBoxContainer/VBoxContainer/Sliders"]
-unique_name_in_owner = true
-texture_filter = 1
-layout_mode = 0
-offset_left = 145.0
-offset_top = 21.0
-offset_right = 185.0
-offset_bottom = 44.0
-text = "10.0"
-label_settings = SubResource("LabelSettings_27jhl")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Blank_4" type="Label" parent="Menu/New Species/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-label_settings = SubResource("LabelSettings_87yka")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Blank_5" type="Label" parent="Menu/New Species/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-label_settings = SubResource("LabelSettings_87yka")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Create" type="Label" parent="Menu/New Species/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-text = "Create"
-label_settings = SubResource("LabelSettings_hveh7")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Menu/New Species/VBoxContainer/Create"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
-libraries = {
-&"": SubResource("AnimationLibrary_kuxid")
-}
-autoplay = "main"
-
-[connection signal="pressed" from="Menu/Main/VBoxContainer/New Species/Button" to="Menu/AnimationPlayer" method="play" binds= ["species"]]
-[connection signal="pressed" from="Menu/Main/VBoxContainer/Options/Button" to="Menu/AnimationPlayer" method="play" binds= ["option"]]
-[connection signal="pressed" from="Menu/Option/VBoxContainer/Back/Button" to="Menu/AnimationPlayer" method="play" binds= ["main"]]
-[connection signal="pressed" from="Menu/New Species/VBoxContainer/Back/Button" to="Menu/AnimationPlayer" method="play" binds= ["main"]]
-[connection signal="value_changed" from="Menu/New Species/VBoxContainer/Species Settings/Population/Pop" to="Menu" method="_on_pop_value_changed"]
-[connection signal="value_changed" from="Menu/New Species/VBoxContainer/World Settings/HBoxContainer/VBoxContainer/Sliders/X" to="Menu" method="_on_x_value_changed"]
-[connection signal="value_changed" from="Menu/New Species/VBoxContainer/World Settings/HBoxContainer/VBoxContainer/Sliders/Y" to="Menu" method="_on_y_value_changed"]
-[connection signal="pressed" from="Menu/New Species/VBoxContainer/Create/Button" to="Menu" method="create"]

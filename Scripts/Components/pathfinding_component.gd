@@ -57,7 +57,7 @@ func direction_to_target(target_pos: Vector2, dir_array := [
 		raycast.force_raycast_update()
 		if raycast.is_colliding():
 			# Set danger and start cooldown for this direction and neighbors
-			danger[count] += 5.0
+			danger[count] += 10.0
 			danger_cooldown[count] = DANGER_COOLDOWN_TIME
 		count += 1
 	
@@ -74,4 +74,4 @@ func get_nearby_position(radius: float = 200.0) -> Vector2:
 	return Vector2(
 		Global.rng.randf_range(-radius, radius),
 		Global.rng.randf_range(-radius, radius)
-	)
+	) + global_position

@@ -48,4 +48,4 @@ func decay_hunger(amount : float = diet_stats.hunger_decay):
 	
 	if (remaining_hunger / diet_stats.hunger) < diet_stats.hunger_threshold: action_component.queue_up_action("Eat", 0.8)
 
-func strave(): print("took damage"); health_component.take_damage(1)
+func strave():health_component.take_damage(1)

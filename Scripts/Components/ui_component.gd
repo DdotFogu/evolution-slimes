@@ -40,7 +40,7 @@ func show_information(selected_slime : Node2D):
 	
 	slime_stat_sheet = selected_slime.stat_sheet
 	
-	Global.current_camera.change_target(selected_slime, 0)
+	Global.current_camera.change_target(selected_slime)
 
 func close_information():
 	Info_animation.play("Close")

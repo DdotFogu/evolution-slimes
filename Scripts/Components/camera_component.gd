@@ -4,7 +4,6 @@ class_name camera_component
 
 # Camera Follow Vars
 @export var target : Node2D
-@export var sens : float = 2
 @export var allow_movement : bool = false
 
 #Other
@@ -32,16 +31,38 @@ func _input(event: InputEvent) -> void:
 		
 		var tween = create_tween()
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			tween.tween_property(self, "zoom", zoom + Vector2(0.1,0.1), 0)
+			tween.tween_property(self, "zoom", zoom + Vector2(0.01,0.01), 0)
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			tween.tween_property(self, "zoom", zoom - Vector2(0.1,0.1), 0)
+			tween.tween_property(self, "zoom", zoom - Vector2(0.01,0.01), 0)
+		
+		zoom.clampf(0.01, 1.0)
 
-func change_target(new_target : Node, speed : float = sens):
+func change_target(new_target : Node):
+	target = null
+	
+	if new_target == null:
+		return
+	
+	var pos_tween = get_tree().create_tween()
+	
+	await pos_tween.tween_property(self, "position", new_target.global_position, 0.25)\
+	.set_ease(Tween.EASE_OUT)\
+	.set_trans(Tween.TRANS_QUINT).finished
+	
 	target = new_target
 	
 	if !target: return
 	
-	var target_position = target.global_position
-	
-	
 	return true
+
+func change_position(new_position : Vector2, speed : float = 1):
+	var tween = get_tree().create_tween()
+	await tween.tween_property(self, "position", new_position, speed).finished
+	
+	return
+
+func change_zoom(new_zoom : Vector2, speed : float = 1):
+	var tween = get_tree().create_tween()
+	await tween.tween_property(self, "zoom", new_zoom, speed).finished
+	
+	return

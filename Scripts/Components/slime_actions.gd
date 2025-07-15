@@ -22,11 +22,14 @@ func mate_action():
 		while true:
 			await get_tree().create_timer(1).timeout
 			if !get_state("mate").partner: break
+			if get_state("mate").partner.get_node("ActionComponet").current_action.size() == 0: break
 			if get_state("mate").partner.get_node("ActionComponet").current_action["Action"] != "Mate":
 				break
 			
 			print("Male lost intrest; stoping mate action")
-			await get_tree().create_timer(0.1).timeout; clear_curr_action(); get_state("wander").change_to_state(); return
+			if current_action.size() == 0: return
+			if current_action["Action"] == "Mate":
+				await get_tree().create_timer(0.1).timeout; clear_curr_action(); get_state("wander").change_to_state(); return
 	
 	var candidates := []
 	# Gather all slimes within range
@@ -36,28 +39,28 @@ func mate_action():
 	var attractiveness_total : float = 0.0
 	
 	# Filter out slimes and collect attractiveness data
-	for slime : CharacterBody2D in candidates.duplicate():
-		if slime == null: continue
+	for candidate : CharacterBody2D in candidates.duplicate():
+		if candidate == null: continue
 		# if male then filter out
-		if slime.stat_sheet.mating_stats.gender == 0: continue
+		if candidate.stat_sheet.mating_stats.gender == 0: continue
 		# if slime is infetile then filter out
-		if slime.stat_sheet.mating_stats.is_fertile == false: continue
+		if candidate.get_node("MatingComponent").is_fertile == false: print("INFERTILE"); continue
 		# if slime isnt fully grown then filter out
-		if slime.get_node("GrowthComponent").growth != 1.0: continue
+		if candidate.get_node("GrowthComponent").growth != 1.0: continue
 		
-		var attr = slime.stat_sheet.mating_stats.attractiveness
+		var attr = candidate.stat_sheet.mating_stats.attractiveness
 		attractiveness_total += attr
 		attractiveness_dict.append({
-			"Slime": slime,
+			"Slime": candidate,
 			"Attractiveness": attr
 		})
+	
+	if attractiveness_dict.size() == 0: await get_tree().create_timer(0.1).timeout; clear_curr_action(); get_state("wander").change_to_state(); return
 	
 	# Normalize to percentage
 	if attractiveness_total > 0:
 		for dict in attractiveness_dict:
 			dict["Attractiveness"] = (dict["Attractiveness"] / attractiveness_total) * 100
-	
-	if attractiveness_dict.size() == 0: await get_tree().create_timer(0.1).timeout; clear_curr_action(); get_state("wander").change_to_state(); return
 	
 	# Choose a mating partner with a weighted algorithm 
 	var roll := Global.rng.randf() * 100.0

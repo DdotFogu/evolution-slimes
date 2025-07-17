@@ -36,7 +36,7 @@ func begin_pregnacy(child : Node2D):
 	
 	# add slime child to scene
 	child.global_position = owner.global_position
-	get_tree().current_scene.add_child(child)
+	Global.y_sort.get_node("Creatures").add_child(child)
 	
 	# set female slime fertilty to true so it can reproduce once again
 	is_fertile = true
@@ -106,7 +106,6 @@ func create_child(partner: Node2D, base_child_scene: PackedScene):
 	child_diet_stats.thrist_decay = avg_with_variance(owner.stat_sheet.diet_stats.thrist_decay, partner.stat_sheet.diet_stats.thrist_decay)
 	
 	# Merge diets and remove duplicates
-	child_diet_stats.diet = null
 	var combined_diet = owner.stat_sheet.diet_stats.diet + partner.stat_sheet.diet_stats.diet
 	for food in combined_diet:
 		if not food in child_diet_stats.diet:
@@ -120,6 +119,26 @@ func create_child(partner: Node2D, base_child_scene: PackedScene):
 	const BASE_INITIAL_GROWTH_RATIO = 50.0 / 120.0
 	child_growth_stats.inital_growth = female.stat_sheet.mating_stats.gestation_period * BASE_INITIAL_GROWTH_RATIO
 	child_stat_sheet.growth_stats = child_growth_stats
+	
+	# Set Color
+	var color_average = (owner.stat_sheet.character_color + partner.stat_sheet.character_color) / 2.0
+	var variance : float = 0.1
+
+	# Add a small random variance to each RGB channel individually
+	var base_color : Color = Color(
+		color_average.r + randf_range(-variance, variance),
+		color_average.g + randf_range(-variance, variance),
+		color_average.b + randf_range(-variance, variance),
+		1.0  # fully opaque
+	)
+
+	# Clamp to valid color values just in case
+	base_color.r = clamp(base_color.r, 0.0, 1.0)
+	base_color.g = clamp(base_color.g, 0.0, 1.0)
+	base_color.b = clamp(base_color.b, 0.0, 1.0)
+	base_color.a = 1.0
+
+	child_stat_sheet.character_color = base_color
 	
 	# Assign stat sheet
 	new_child.stat_sheet = child_stat_sheet

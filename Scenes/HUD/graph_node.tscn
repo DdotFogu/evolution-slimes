@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq01mxshvj0qi"]
+
+[ext_resource type="Texture2D" uid="uid://4hns6hp7ejur" path="res://Assets/Sprites/Slimes/Slime.png" id="1_64rof"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oalow"]
+atlas = ExtResource("1_64rof")
+region = Rect2(105, 125, 30, 30)
+
+[node name="GraphNode" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = SubResource("AtlasTexture_oalow")

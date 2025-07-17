@@ -3,11 +3,16 @@ extends Node2D
 @export var ground_tilemap : TileMapLayer
 @export var water_tilemap : TileMapLayer
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 func _ready() -> void:
 	# Start submerged and hidden
 	position += Vector2(0, 42)
 	#scale = Vector2(0, 0)
 
+func play_popup():
+	animation_player.play("popup")
+	
 	var tween = get_tree().create_tween()
 	
 	# Rise up like surfacing from water

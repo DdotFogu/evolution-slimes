@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c86ksj3kxf4xl"]
+[gd_scene load_steps=11 format=3 uid="uid://c86ksj3kxf4xl"]
 
 [ext_resource type="PackedScene" uid="uid://bl6ldc0qkyg3" path="res://Scenes/Component/camera_component.tscn" id="2_ouhkt"]
 [ext_resource type="PackedScene" uid="uid://sotyh3vmciew" path="res://Scenes/Component/seed_component.tscn" id="2_x5sp8"]
@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://d2nuvo2k75of3" path="res://Shaders/scrolling_bg.gdshader" id="3_ouhkt"]
 [ext_resource type="Texture2D" uid="uid://4hns6hp7ejur" path="res://Assets/Sprites/Slimes/Slime.png" id="5_27jhl"]
 [ext_resource type="PackedScene" uid="uid://ectun0ugjgw8" path="res://Scenes/HUD/menu.tscn" id="6_hveh7"]
-[ext_resource type="FontFile" uid="uid://ddyr1wwb5byj1" path="res://Assets/Fonts/Vaticanus-G3yVG.ttf" id="7_87yka"]
+[ext_resource type="PackedScene" uid="uid://b1caqcq731xmw" path="res://Scenes/HUD/graphing.tscn" id="7_87yka"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p7pgw"]
 texture = ExtResource("5_27jhl")
@@ -483,20 +483,6 @@ shader_parameter/line_count = 20.0
 shader_parameter/speed = 10.0
 shader_parameter/blur = 0.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hveh7"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.101961, 0.101961, 0.101961, 1)
-corner_detail = 5
-
-[sub_resource type="Theme" id="Theme_87yka"]
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_hveh7")
-
-[sub_resource type="LabelSettings" id="LabelSettings_kjd5s"]
-font = ExtResource("7_87yka")
-
 [node name="World" type="Node2D"]
 
 [node name="CameraComponent" parent="." instance=ExtResource("2_ouhkt")]
@@ -551,41 +537,5 @@ grow_vertical = 2
 [node name="Menu" parent="." instance=ExtResource("6_hveh7")]
 unique_name_in_owner = true
 
-[node name="Graphing" type="CanvasLayer" parent="."]
+[node name="Graphing" parent="." instance=ExtResource("7_87yka")]
 unique_name_in_owner = true
-visible = false
-
-[node name="PanelContainer" type="PanelContainer" parent="Graphing"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -396.5
-offset_top = -267.5
-offset_right = 396.5
-offset_bottom = 267.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme = SubResource("Theme_87yka")
-
-[node name="GraphLine" type="Line2D" parent="Graphing/PanelContainer"]
-position = Vector2(0, 535.5)
-points = PackedVector2Array(0, 0, 79.805, -86.33)
-width = 5.0
-
-[node name="YHBox" type="VBoxContainer" parent="Graphing"]
-offset_left = 133.0
-offset_top = 57.0
-offset_right = 173.0
-offset_bottom = 592.0
-alignment = 2
-
-[node name="XCount" type="Label" parent="Graphing/YHBox"]
-texture_filter = 1
-layout_mode = 2
-text = "0.0"
-label_settings = SubResource("LabelSettings_kjd5s")
-horizontal_alignment = 1
-vertical_alignment = 1

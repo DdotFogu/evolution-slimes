@@ -22,7 +22,6 @@ func _input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseMotion and isPressed:
 		change_target(null)
-		Info.close_information()
 		
 		global_position -= event.relative
 	

@@ -10,14 +10,9 @@ class_name map_manager
 @onready var water_sources: Node2D = $"../Ysort/Water Sources"
 @onready var other: Node2D = $"../Ysort/Other"
 
-#func _ready() -> void: create_world()
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Test Key"):
-		get_tree().reload_current_scene()
-
 #clears entire world
 func destory_world(): 
+	Global.population_count = 0
 	ground_tilemap.clear(); water_tilemap.clear()
 	for child in creatures.get_children(): child.queue_free()
 	for child in food_sources.get_children(): child.queue_free()
@@ -30,6 +25,8 @@ func create_world(data : WorldData):
 	destory_world(); await create_island(data.world_size)
 	create_water_sources(data.water_count); create_food_sources(data.food_count)
 	
+	#Allow pausing
+	%Menu.can_pause = true
 	return
 
 func create_food_sources(amount : int):
@@ -48,6 +45,13 @@ func create_water_sources(amount : int):
 		var spawn_pos = Global.get_pos_in_tilemap(ground_tilemap, 10)
 		
 		source_instance.global_position = spawn_pos
+		
+		while true:
+			if source_instance.get_node("OverlapCheck").has_overlapping_bodies():
+				print("diddy") 
+				spawn_pos = Global.get_pos_in_tilemap(ground_tilemap, 10)
+				source_instance.global_position = spawn_pos
+			else: break
 		
 		Global.y_sort.get_node("Water Sources").add_child(source_instance)
 
@@ -69,6 +73,7 @@ func create_island(size := Vector2(10, 10), skip_popup : bool = false):
 	#Animated Popup
 	if skip_popup == false:
 		var instance_array : Array[Node2D]
+		var terrain_array : Array[Node2D]
 		for x in size.x + 2:
 			var terrain_instance = preload("res://Scenes/World/IslandPiece.tscn").instantiate()
 			terrain_instance.create_row(Vector2i(x, size.y), size)
@@ -78,13 +83,15 @@ func create_island(size := Vector2(10, 10), skip_popup : bool = false):
 			Global.y_sort.get_node("Other").add_child(terrain_instance)
 			
 			instance_array.append(terrain_instance)
+		
+		for instance in instance_array:
+			if !instance: return
+			instance.play_popup()
 			
 			await get_tree().create_timer(0.3 / (size.x / 10)).timeout
 		
 		await get_tree().create_timer(2.0).timeout
-		
-		for node in instance_array: node.queue_free()
-		instance_array.clear()
+		for instance in instance_array: instance.queue_free()
 	
 	# Create the ground
 	var terrain_array : Array

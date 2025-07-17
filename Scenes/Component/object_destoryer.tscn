@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dfut45psevd5h"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4bia"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lerjy"]
 size = Vector2(317.75, 320)
 
 [node name="ObjectDestoryer" type="Area2D"]
@@ -8,4 +8,4 @@ collision_layer = 0
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_n4bia")
+shape = SubResource("RectangleShape2D_lerjy")

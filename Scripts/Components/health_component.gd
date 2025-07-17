@@ -36,6 +36,12 @@ func regen():
 func die():
 	await get_tree().create_timer(0.1).timeout
 	
+	Global.population_count -= 1
+	Global.grapher.reserved_data["POP"].append({
+		"X" : Time.get_ticks_msec() / 1000,
+		"Y" : Global.population_count
+	})
+	
 	death.emit()
 	owner.queue_free()
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://ectun0ugjgw8"]
+[gd_scene load_steps=34 format=3 uid="uid://ectun0ugjgw8"]
 
 [ext_resource type="Script" uid="uid://dt8kx0ogni502" path="res://Scripts/Ui/menu.gd" id="1_qufxd"]
 [ext_resource type="FontFile" uid="uid://ddyr1wwb5byj1" path="res://Assets/Fonts/Vaticanus-G3yVG.ttf" id="2_ixc7f"]
 [ext_resource type="Texture2D" uid="uid://ywj2io43qpk" path="res://Assets/Sprites/Grabber.png" id="3_3jbje"]
+[ext_resource type="Shader" uid="uid://ddsb5xft4o2r6" path="res://Shaders/color_wrapping.gdshader" id="4_ixc7f"]
 [ext_resource type="Texture2D" uid="uid://4hns6hp7ejur" path="res://Assets/Sprites/Slimes/Slime.png" id="4_kfsww"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_87yka"]
@@ -16,21 +17,28 @@ font_size = 12
 [sub_resource type="LabelSettings" id="LabelSettings_27jhl"]
 font = ExtResource("2_ixc7f")
 
+[sub_resource type="LabelSettings" id="LabelSettings_qufxd"]
+font = ExtResource("2_ixc7f")
+
+[sub_resource type="Theme" id="Theme_3jbje"]
+default_font = ExtResource("2_ixc7f")
+LinkButton/colors/font_color = Color(0, 1, 1, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_hveh7"]
 font = ExtResource("2_ixc7f")
 
 [sub_resource type="LabelSettings" id="LabelSettings_0phyg"]
 font = ExtResource("2_ixc7f")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30wmc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixc7f"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0phyg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jbje"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_0phyg"]
-Button/styles/normal = SubResource("StyleBoxFlat_30wmc")
-Button/styles/pressed = SubResource("StyleBoxFlat_0phyg")
+Button/styles/normal = SubResource("StyleBoxFlat_ixc7f")
+Button/styles/pressed = SubResource("StyleBoxFlat_3jbje")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7pgw"]
 content_margin_left = 4.0
@@ -70,6 +78,15 @@ CheckButton/fonts/font = ExtResource("2_ixc7f")
 font = ExtResource("2_ixc7f")
 font_size = 24
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3jbje"]
+shader = ExtResource("4_ixc7f")
+shader_parameter/shade_one = Color(0.803922, 0.376471, 0.576471, 1)
+shader_parameter/new_one = Color(0.803922, 0.376471, 0.576471, 1)
+shader_parameter/shade_two = Color(1, 0.682353, 0.713726, 1)
+shader_parameter/new_two = Color(1, 0.682353, 0.713726, 1)
+shader_parameter/shade_three = Color(0.556863, 0.278431, 0.54902, 1)
+shader_parameter/new_three = Color(0.556863, 0.278431, 0.54902, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0phyg"]
 atlas = ExtResource("4_kfsww")
 region = Rect2(120, 15, 70, 60)
@@ -83,10 +100,14 @@ bg_color = Color(0.101961, 0.101961, 0.101961, 1)
 corner_detail = 5
 
 [sub_resource type="Theme" id="Theme_ixc7f"]
+ColorPicker/constants/h_width = 15
+ColorPicker/constants/sv_height = 50
+ColorPicker/constants/sv_width = 50
 ColorPickerButton/styles/focus = SubResource("StyleBoxFlat_qufxd")
 ColorPickerButton/styles/hover = SubResource("StyleBoxFlat_qufxd")
 ColorPickerButton/styles/normal = SubResource("StyleBoxFlat_qufxd")
 ColorPickerButton/styles/pressed = SubResource("StyleBoxFlat_qufxd")
+ColorPresetButton/styles/preset_fg = null
 
 [sub_resource type="Animation" id="Animation_kjd5s"]
 length = 0.001
@@ -251,6 +272,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Paused Menu:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_87yka"]
@@ -562,6 +595,59 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
+[node name="Tag" type="Label" parent="Main"]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -108.0
+offset_top = -24.0
+offset_right = 108.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Made by Todd"
+label_settings = SubResource("LabelSettings_qufxd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Build" type="Label" parent="Main"]
+process_mode = 3
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 100.0
+grow_vertical = 0
+text = "Build : 1.0"
+label_settings = SubResource("LabelSettings_qufxd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="Main"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = 282.0
+offset_right = 43.0
+offset_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3jbje")
+text = "Github Repo"
+uri = "https://github.com/DdotFogu/evolution-slimes"
+
 [node name="Option" type="Control" parent="."]
 unique_name_in_owner = true
 process_mode = 3
@@ -582,9 +668,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -108.0
-offset_top = -164.0
+offset_top = -173.0
 offset_right = 108.0
-offset_bottom = -56.0
+offset_bottom = -65.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -623,9 +709,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -139.0
-offset_top = -80.0
+offset_top = -89.0
 offset_right = -99.0
-offset_bottom = -40.0
+offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -975,20 +1061,6 @@ label_settings = SubResource("LabelSettings_27jhl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Pop" type="HSlider" parent="New Species/Species Main/VBoxContainer/Species Settings/Population"]
-unique_name_in_owner = true
-process_mode = 3
-texture_filter = 1
-layout_mode = 0
-offset_left = 44.0
-offset_top = 11.0
-offset_right = 187.0
-offset_bottom = 27.0
-theme = SubResource("Theme_0d0er")
-min_value = 2.0
-value = 2.0
-rounded = true
-
 [node name="PopCount" type="Label" parent="New Species/Species Main/VBoxContainer/Species Settings/Population"]
 unique_name_in_owner = true
 process_mode = 3
@@ -1002,6 +1074,20 @@ text = "2.0"
 label_settings = SubResource("LabelSettings_27jhl")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Pop" type="HSlider" parent="New Species/Species Main/VBoxContainer/Species Settings/Population"]
+unique_name_in_owner = true
+process_mode = 3
+texture_filter = 1
+layout_mode = 0
+offset_left = 44.0
+offset_top = 12.0
+offset_right = 187.0
+offset_bottom = 28.0
+theme = SubResource("Theme_0d0er")
+min_value = 1.0
+value = 2.0
+rounded = true
 
 [node name="Species Stats" type="Label" parent="New Species/Species Main/VBoxContainer/Species Settings"]
 process_mode = 3
@@ -1718,8 +1804,10 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="Slime" type="TextureRect" parent="New Species/Species Stats/VBoxContainer/HBoxContainer/Slime Preview"]
+unique_name_in_owner = true
 z_index = 1
 texture_filter = 1
+material = SubResource("ShaderMaterial_3jbje")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1825,9 +1913,9 @@ layout_mode = 2
 texture_filter = 1
 layout_mode = 0
 offset_left = 196.0
-offset_top = 114.0
+offset_top = 204.0
 offset_right = 330.0
-offset_bottom = 130.0
+offset_bottom = 220.0
 text = "Color :"
 label_settings = SubResource("LabelSettings_27jhl")
 horizontal_alignment = 1
@@ -1837,9 +1925,9 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 192.0
-offset_top = 130.0
+offset_top = 220.0
 offset_right = 335.0
-offset_bottom = 145.0
+offset_bottom = 235.0
 theme = SubResource("Theme_ixc7f")
 color = Color(0.803922, 0.376471, 0.576471, 1)
 

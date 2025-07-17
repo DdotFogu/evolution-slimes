@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cliqmeglrrpb8"]
+[gd_scene load_steps=48 format=3 uid="uid://cliqmeglrrpb8"]
 
 [ext_resource type="Script" uid="uid://bamnaw52w1k70" path="res://Scripts/Classes/Character Base.gd" id="1_gxxdi"]
 [ext_resource type="Script" uid="uid://cld53y2v7ce22" path="res://Scripts/Classes/stats/Action Stats.gd" id="2_ncieb"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://btt00psp2ndbv" path="res://Scripts/Classes/stats/Movement Stats.gd" id="7_yyv6u"]
 [ext_resource type="Script" uid="uid://d2ymegg2fohlx" path="res://Scripts/Classes/stats/Stat Sheet.gd" id="8_voogg"]
 [ext_resource type="Script" uid="uid://xo5ui0fe428f" path="res://Scripts/Classes/slime_visual_component.gd" id="9_gxxdi"]
+[ext_resource type="Shader" uid="uid://ddsb5xft4o2r6" path="res://Shaders/color_wrapping.gdshader" id="10_ncieb"]
 [ext_resource type="Texture2D" uid="uid://4hns6hp7ejur" path="res://Assets/Sprites/Slimes/Slime.png" id="10_v51bx"]
 [ext_resource type="PackedScene" uid="uid://br0s0bfdp2be" path="res://Scenes/Component/pathfinding_component.tscn" id="11_5q5th"]
 [ext_resource type="PackedScene" uid="uid://dcygtewm0rodh" path="res://Scenes/Component/product_rays.tscn" id="12_3hdg7"]
@@ -151,13 +152,21 @@ radius = 13.0
 height = 50.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxxdi"]
+resource_local_to_scene = true
+shader = ExtResource("10_ncieb")
+shader_parameter/shade_one = Color(0.803922, 0.376471, 0.576471, 1)
+shader_parameter/new_one = Color(0.803922, 0.376471, 0.576471, 1)
+shader_parameter/shade_two = Color(1, 0.682353, 0.713726, 1)
+shader_parameter/new_two = Color(1, 0.682353, 0.713726, 1)
+shader_parameter/shade_three = Color(0.556863, 0.278431, 0.54902, 1)
+shader_parameter/new_three = Color(0.556863, 0.278431, 0.54902, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_meode"]
 radius = 5.0
 
 [node name="Slime" type="CharacterBody2D" groups=["Slime"]]
 y_sort_enabled = true
-collision_mask = 18
+collision_mask = 2
 motion_mode = 1
 platform_on_leave = 2
 platform_floor_layers = 4294967040
@@ -183,7 +192,8 @@ cosmetics = {
 "FAttena": NodePath("Attena_Lashes/FemaleAttena")
 }
 
-[node name="SpriteComponent" type="Sprite2D" parent="VisualComponent"]
+[node name="Body" type="Sprite2D" parent="VisualComponent"]
+unique_name_in_owner = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_gxxdi")
 texture = ExtResource("10_v51bx")
@@ -278,7 +288,6 @@ script = ExtResource("25_ghytu")
 pathfinding_component = NodePath("../../PathfindingComponent")
 growth_component = NodePath("../../GrowthComponent")
 wander_radius = 1000.0
-goto_margin = 120.0
 metadata/_custom_type_script = "uid://d037sd1151ck3"
 
 [node name="wander_timer" type="Timer" parent="State Machine/Wander"]

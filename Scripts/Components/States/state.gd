@@ -23,7 +23,10 @@ func eat():
 			avalible_food.erase(food)
 	if avalible_food.size() == 0: await get_tree().create_timer(0.1).timeout; Transitioned.emit(self, "Wander"); return
 	else:
-		var food_to_eat : base_food = avalible_food.pick_random()
+		var food_to_eat = avalible_food.pick_random()
+		while true:
+			if food_to_eat: break
+			else: food_to_eat = avalible_food.pick_random()
 		food_to_eat.eat(owner)
 		
 		if hunger_component.remaining_hunger == body.stat_sheet.diet_stats.hunger: await get_tree().create_timer(0.1).timeout; Transitioned.emit(self, "Wander")

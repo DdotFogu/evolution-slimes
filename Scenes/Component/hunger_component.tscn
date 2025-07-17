@@ -8,7 +8,7 @@ enabled = true
 
 [node name="StraveTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 15.0
+wait_time = 10.0
 autostart = true
 
 [connection signal="timeout" from="StraveTimer" to="." method="strave"]

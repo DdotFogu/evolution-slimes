@@ -38,21 +38,30 @@ func _process(delta: float) -> void:
 		%DriveCount.text = str(%SexDrive.value)
 		%GestationCount.text = str(%Gestation.value) + " secs"
 		%VarationCount.text = str(%Varation.value) + "%"
+		
+		var base_color : Color = %ColorPickerButton.color
+		%Slime.material.set_shader_parameter("new_one", base_color)
+		var light_color = base_color
+		light_color = light_color.lightened(0.35) 
+		%Slime.material.set_shader_parameter("new_two", light_color)
+		var dark_color = base_color
+		dark_color = dark_color.darkened(0.25)
+		%Slime.material.set_shader_parameter("new_three", dark_color)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Reset"):
 		if !can_pause: return
 		
 		if %"Paused Menu".visible == false:
+			%Graphing.visible = false
 			ui_player.play("pause")
 			get_tree().paused = true
 		else:
+			%Graphing.visible = true
 			ui_player.play("clear")
 			get_tree().paused = false
 
 func create() -> void:
-	can_pause = true
-	
 	#create world map and allow cam movement
 	var data := WorldData.new()
 	data.inital_population = %Pop.value
@@ -66,6 +75,9 @@ func create() -> void:
 	await %MapManager.create_world(data)
 	for i in range(data.inital_population):
 		%MapManager.create_slime_pop(1, get_slime_data())
+	
+	%Graphing.clear_data()
+	%Graphing.visible = true
 
 func get_slime_data():
 	#create species_data
@@ -106,6 +118,8 @@ func get_slime_data():
 	species_mate_stats.gestation_period = %Gestation.value + (%Gestation.value * Global.rng.randf_range(0.0, varaiton))
 	species_mate_stats.gender = pop_count % 2
 	species_data.mating_stats = species_mate_stats
+	
+	species_data.character_color = %ColorPickerButton.color
 	
 	return species_data
 
@@ -168,6 +182,9 @@ func fps_toggle_pressed(toggled_on: bool) -> void:
 
 func on_menu_pressed() -> void:
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	Info.Info_animation.play("Close")
+	%MapManager.destory_world()
+	%Graphing.visible = false
+	ui_player.play("main")
 
 func exit_app() -> void: get_tree().quit()

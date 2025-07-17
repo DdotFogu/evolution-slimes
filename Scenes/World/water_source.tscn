@@ -521,6 +521,14 @@ tile_set = SubResource("TileSet_yfjpa")
 [node name="ObjectDestoryer" parent="." instance=ExtResource("2_yfjpa")]
 script = ExtResource("3_6ctx6")
 
+[node name="OverlapCheck" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 19
+
+[node name="CollisionComponent" type="CollisionShape2D" parent="OverlapCheck"]
+position = Vector2(0.125, 0)
+shape = SubResource("RectangleShape2D_3acrq")
+
 [node name="DestoryTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true

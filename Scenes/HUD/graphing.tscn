@@ -1,0 +1,267 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1caqcq731xmw"]
+
+[ext_resource type="Script" uid="uid://beijmy76c5nq1" path="res://Scripts/Ui/graphing.gd" id="1_7lekk"]
+[ext_resource type="FontFile" uid="uid://ddyr1wwb5byj1" path="res://Assets/Fonts/Vaticanus-G3yVG.ttf" id="2_5l5d7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kjd5s"]
+font = ExtResource("2_5l5d7")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjd5s"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7pgw"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="Theme" id="Theme_kuxid"]
+Button/styles/normal = SubResource("StyleBoxFlat_kjd5s")
+Button/styles/pressed = SubResource("StyleBoxFlat_p7pgw")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hveh7"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 1)
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_87yka"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_hveh7")
+
+[node name="Graphing" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_7lekk")
+
+[node name="Graph" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DataTypes" type="HBoxContainer" parent="Graph"]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = 187.0
+offset_top = 64.0
+offset_right = 978.0
+offset_bottom = 80.0
+
+[node name="Population" type="Label" parent="Graph/DataTypes"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "Population "
+label_settings = SubResource("LabelSettings_kjd5s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Graph/DataTypes/Population"]
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 73.0
+offset_bottom = 15.0
+theme = SubResource("Theme_kuxid")
+toggle_mode = true
+
+[node name="Speed" type="Label" parent="Graph/DataTypes"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "Speed "
+label_settings = SubResource("LabelSettings_kjd5s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Graph/DataTypes/Speed"]
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 15.0
+theme = SubResource("Theme_kuxid")
+toggle_mode = true
+
+[node name="Vision" type="Label" parent="Graph/DataTypes"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "Vision_Range "
+label_settings = SubResource("LabelSettings_kjd5s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Graph/DataTypes/Vision"]
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 88.0
+offset_bottom = 15.0
+theme = SubResource("Theme_kuxid")
+toggle_mode = true
+
+[node name="Action" type="Label" parent="Graph/DataTypes"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "Action_Range "
+label_settings = SubResource("LabelSettings_kjd5s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Graph/DataTypes/Action"]
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 93.0
+offset_bottom = 15.0
+theme = SubResource("Theme_kuxid")
+toggle_mode = true
+
+[node name="Sex Drive" type="Label" parent="Graph/DataTypes"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "Sex_Drive "
+label_settings = SubResource("LabelSettings_kjd5s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Graph/DataTypes/Sex Drive"]
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 68.0
+offset_bottom = 15.0
+theme = SubResource("Theme_kuxid")
+toggle_mode = true
+
+[node name="Gestation" type="Label" parent="Graph/DataTypes"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "Gestation_Period "
+label_settings = SubResource("LabelSettings_kjd5s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Graph/DataTypes/Gestation"]
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 15.0
+theme = SubResource("Theme_kuxid")
+toggle_mode = true
+
+[node name="Attractiveness" type="Label" parent="Graph/DataTypes"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "Attractiveness"
+label_settings = SubResource("LabelSettings_kjd5s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Graph/DataTypes/Attractiveness"]
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 108.0
+offset_bottom = 15.0
+theme = SubResource("Theme_kuxid")
+toggle_mode = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Graph"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 159.5
+offset_top = 36.5
+offset_right = 952.5
+offset_bottom = 571.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme = SubResource("Theme_87yka")
+
+[node name="GraphLine" type="Line2D" parent="Graph/PanelContainer"]
+unique_name_in_owner = true
+position = Vector2(2.5, 533.5)
+width = 2.0
+default_color = Color(0, 1, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="YLabels" type="Control" parent="Graph"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 133.0
+offset_top = 580.0
+offset_right = 173.0
+offset_bottom = 594.0
+
+[node name="Data" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -16.0
+offset_right = 41.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(44.715, 0)
+text = "Graph Data"
+label_settings = SubResource("LabelSettings_kjd5s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Data"]
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 82.0
+offset_bottom = 15.0
+theme = SubResource("Theme_kuxid")
+toggle_mode = true
+flat = true
+
+[node name="DataUpdate Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="pressed" from="Graph/DataTypes/Population/Button" to="." method="data_button_press" binds= ["POP"]]
+[connection signal="pressed" from="Graph/DataTypes/Population/Button" to="." method="select_data" binds= ["POP"]]
+[connection signal="pressed" from="Graph/DataTypes/Speed/Button" to="." method="data_button_press" binds= ["SPEED"]]
+[connection signal="pressed" from="Graph/DataTypes/Speed/Button" to="." method="select_data" binds= ["SPEED"]]
+[connection signal="pressed" from="Graph/DataTypes/Vision/Button" to="." method="data_button_press" binds= ["VISION"]]
+[connection signal="pressed" from="Graph/DataTypes/Vision/Button" to="." method="select_data" binds= ["VISION"]]
+[connection signal="pressed" from="Graph/DataTypes/Action/Button" to="." method="data_button_press" binds= ["ACTION"]]
+[connection signal="pressed" from="Graph/DataTypes/Action/Button" to="." method="select_data" binds= ["ACTION"]]
+[connection signal="pressed" from="Graph/DataTypes/Sex Drive/Button" to="." method="data_button_press" binds= ["DRIVE"]]
+[connection signal="pressed" from="Graph/DataTypes/Sex Drive/Button" to="." method="select_data" binds= ["DRIVE"]]
+[connection signal="pressed" from="Graph/DataTypes/Gestation/Button" to="." method="data_button_press" binds= ["GESTATION"]]
+[connection signal="pressed" from="Graph/DataTypes/Gestation/Button" to="." method="select_data" binds= ["GESTATION"]]
+[connection signal="pressed" from="Graph/DataTypes/Attractiveness/Button" to="." method="data_button_press" binds= ["ATTRACTIVENESS"]]
+[connection signal="pressed" from="Graph/DataTypes/Attractiveness/Button" to="." method="select_data" binds= ["ATTRACTIVENESS"]]
+[connection signal="pressed" from="Data/Button" to="." method="toggle_graph"]
+[connection signal="timeout" from="DataUpdate Timer" to="." method="update_data"]

@@ -1,6 +1,8 @@
 extends Node
 
 @onready var rng = RandomNumberGenerator.new()
+@onready var grapher = get_tree().current_scene.get_node("Graphing")
+var population_count : int = 0
 var current_camera : Camera2D
 var y_sort : Node2D
 

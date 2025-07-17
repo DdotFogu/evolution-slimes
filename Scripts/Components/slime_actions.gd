@@ -44,12 +44,13 @@ func mate_action():
 		# if male then filter out
 		if candidate.stat_sheet.mating_stats.gender == 0: continue
 		# if slime is infetile then filter out
-		if candidate.get_node("MatingComponent").is_fertile == false: print("INFERTILE"); continue
+		if candidate.get_node("MatingComponent").is_fertile == false: continue
 		# if slime isnt fully grown then filter out
 		if candidate.get_node("GrowthComponent").growth != 1.0: continue
 		
 		var attr = candidate.stat_sheet.mating_stats.attractiveness
 		attractiveness_total += attr
+		if !candidate: continue
 		attractiveness_dict.append({
 			"Slime": candidate,
 			"Attractiveness": attr
@@ -74,10 +75,12 @@ func mate_action():
 	chosen_slime.get_node("ActionComponet").queue_up_action("Mate", 0.3)
 	goto(chosen_slime.global_position); await get_state("goto").Exited
 	
-	get_state("mate").partner = chosen_slime
-	chosen_slime.get_node("ActionComponet").get_state("mate").partner = owner
+	if chosen_slime:
+		get_state("mate").partner = chosen_slime
+		chosen_slime.get_node("ActionComponet").get_state("mate").partner = owner
+		
+		chosen_slime.get_node("ActionComponet").get_state("mate").change_to_state()
 	
-	chosen_slime.get_node("ActionComponet").get_state("mate").change_to_state()
 	get_state("mate").change_to_state()
 
 func eat_action():
@@ -125,6 +128,6 @@ func drink_action():
 			if closest_source != null:
 				break
 	
-	goto(closest_source.global_position, closest_source.get_node("CollisionComponent").shape.size.x); await get_state("goto").Exited
+	goto(closest_source.global_position, closest_source.get_node("CollisionComponent").shape.size.x - 20); await get_state("goto").Exited
 	
 	get_state("drink").change_to_state();

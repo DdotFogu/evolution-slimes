@@ -7,9 +7,10 @@ func destory_objects_in_area(skip : bool = false):
 	if !enabled: return
 	
 	for node in get_overlapping_bodies(): 
-		if skip:
+		
+		if !skip:
 			var scale_tween = get_tree().create_tween()
-			await scale_tween.tween_property(node, "scale", Vector2.ZERO, 0.5).finished
+			scale_tween.tween_property(node, "scale", Vector2.ZERO, 0.5)
 		
 		if !node: return
 		node.queue_free()

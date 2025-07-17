@@ -523,7 +523,7 @@ script = ExtResource("3_6ctx6")
 
 [node name="OverlapCheck" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 19
+collision_mask = 18
 
 [node name="CollisionComponent" type="CollisionShape2D" parent="OverlapCheck"]
 position = Vector2(0.125, 0)

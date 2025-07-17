@@ -14,10 +14,6 @@ class_name mating_component
 @onready var mating_stats : MatingStats = owner.stat_sheet.mating_stats
 @onready var mate_timer : Timer = Timer.new()
 
-#func _process(delta: float) -> void:
-	#if mating_stats.gender == 1:
-		#print(is_fertile)
-
 func _ready() -> void:
 	#Create timer to decide when male looks for a mate
 	if mating_stats.gender == 0: 
@@ -31,12 +27,23 @@ func begin_pregnacy(child : Node2D):
 	# If male then return because male can't give birth; idiot!
 	if mating_stats.gender == 0: return
 	
+	%VisualComponent.show_item("PBlush", true)
+	
 	# wait until gestation period has ended
 	await get_tree().create_timer(mating_stats.gestation_period).timeout
+	
+	%Idle.change_to_state()
+	
+	%VisualComponent.show_item("PBlush", false)
 	
 	# add slime child to scene
 	child.global_position = owner.global_position
 	Global.y_sort.get_node("Creatures").add_child(child)
+	
+	var pos_tween = get_tree().create_tween()
+	pos_tween.tween_property(child, "position:y", child.position.y - 125, 1)\
+	.set_ease(Tween.EASE_OUT)\
+	.set_trans(Tween.TRANS_CUBIC)
 	
 	# set female slime fertilty to true so it can reproduce once again
 	is_fertile = true
@@ -56,7 +63,7 @@ func should_seek_partner() -> bool:
 func avg_with_variance(a: float, b: float, variance: float = 0.1) -> float:
 	var average = (a + b) / 2.0
 	var offset = randf_range(-variance, variance) * average
-	return average + offset
+	return round((average + offset) * 100.0) / 100.0
 
 func create_child(partner: Node2D, base_child_scene: PackedScene):
 	var new_child = base_child_scene.instantiate()

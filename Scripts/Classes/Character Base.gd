@@ -8,7 +8,6 @@ var parents : Dictionary
 var children : Array
 
 func _ready() -> void:
-	print("Skune ")
 	Global.population_count += 1
 
 func _physics_process(_delta): 

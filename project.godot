@@ -26,6 +26,10 @@ window/size/mode=3
 window/size/borderless=true
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/audio_manager/plugin.cfg")
+
 [file_customization]
 
 folder_colors={

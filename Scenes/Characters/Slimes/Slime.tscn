@@ -1,0 +1,902 @@
+[gd_scene load_steps=49 format=3 uid="uid://cliqmeglrrpb8"]
+
+[ext_resource type="Script" uid="uid://bamnaw52w1k70" path="res://Scripts/Classes/Character Base.gd" id="1_6500x"]
+[ext_resource type="Script" uid="uid://cld53y2v7ce22" path="res://Scripts/Classes/stats/Action Stats.gd" id="2_ans7j"]
+[ext_resource type="Script" uid="uid://bnegr4jaj148f" path="res://Scripts/Classes/stats/Diet Stats.gd" id="3_6tj2h"]
+[ext_resource type="Script" uid="uid://cggoonwmx4efq" path="res://Scripts/Classes/stats/Growth Stats.gd" id="4_6ikya"]
+[ext_resource type="Script" uid="uid://17vk0qsshlcu" path="res://Scripts/Classes/stats/Health Stats.gd" id="5_e7dbh"]
+[ext_resource type="Script" uid="uid://bdsmn6e6mhnl7" path="res://Scripts/Classes/stats/Mating Stats.gd" id="6_e2clh"]
+[ext_resource type="Script" uid="uid://btt00psp2ndbv" path="res://Scripts/Classes/stats/Movement Stats.gd" id="7_gl27i"]
+[ext_resource type="Script" uid="uid://d2ymegg2fohlx" path="res://Scripts/Classes/stats/Stat Sheet.gd" id="8_k182d"]
+[ext_resource type="Script" uid="uid://xo5ui0fe428f" path="res://Scripts/Classes/slime_visual_component.gd" id="9_0gfj5"]
+[ext_resource type="Shader" uid="uid://ddsb5xft4o2r6" path="res://Shaders/color_wrapping.gdshader" id="10_a8rme"]
+[ext_resource type="Texture2D" uid="uid://4hns6hp7ejur" path="res://Assets/Sprites/Slimes/Slime.png" id="11_qeo2f"]
+[ext_resource type="PackedScene" uid="uid://br0s0bfdp2be" path="res://Scenes/Component/pathfinding_component.tscn" id="12_1hmw2"]
+[ext_resource type="PackedScene" uid="uid://dcygtewm0rodh" path="res://Scenes/Component/product_rays.tscn" id="13_1kipn"]
+[ext_resource type="PackedScene" uid="uid://cgvkdw6rtfih5" path="res://Scenes/Component/health_component.tscn" id="14_dqski"]
+[ext_resource type="PackedScene" uid="uid://knq274mxhmj" path="res://Scenes/Component/hunger_component.tscn" id="15_aeoyh"]
+[ext_resource type="PackedScene" uid="uid://bqcpn11fuxc8q" path="res://Scenes/Component/thrist_component.tscn" id="16_6kyhw"]
+[ext_resource type="PackedScene" uid="uid://d8vlhvfa6yji" path="res://Scenes/Component/growth_component.tscn" id="17_kl2jd"]
+[ext_resource type="PackedScene" uid="uid://dpa3n8dxp3xyn" path="res://Scenes/Component/mating_component.tscn" id="18_b8xgk"]
+[ext_resource type="PackedScene" uid="uid://b44velwyjad5s" path="res://Scenes/Component/action_componet.tscn" id="19_mg2af"]
+[ext_resource type="Script" uid="uid://be1bekq0ekp1y" path="res://Scripts/Components/slime_actions.gd" id="20_qu4v5"]
+[ext_resource type="PackedScene" uid="uid://ch55c0koeb6f0" path="res://Scenes/Component/vision_component.tscn" id="21_6dna0"]
+[ext_resource type="PackedScene" uid="uid://bsad3dcuvs8gi" path="res://Scenes/Component/animation_handler.tscn" id="22_1wx4u"]
+[ext_resource type="Script" uid="uid://bvhvv7e1nlkc3" path="res://Scripts/Components/info_component.gd" id="23_dqh3y"]
+[ext_resource type="Script" uid="uid://fow641oc4s1c" path="res://Scripts/Components/state_machine.gd" id="24_21q06"]
+[ext_resource type="Script" uid="uid://hki0ialygjch" path="res://Scripts/Components/States/idle.gd" id="25_i3rdm"]
+[ext_resource type="Script" uid="uid://teqcs1hbgb62" path="res://Scripts/Components/States/wander.gd" id="26_pp5vf"]
+[ext_resource type="Script" uid="uid://dih136ovs2sx3" path="res://Scripts/Components/States/goto.gd" id="27_u51rs"]
+[ext_resource type="Script" uid="uid://bxdx86c1c8kh0" path="res://Scripts/Components/States/state.gd" id="28_oafpq"]
+[ext_resource type="Script" uid="uid://m1fpjvuaupey" path="res://Scripts/Components/States/drinking.gd" id="29_1heri"]
+[ext_resource type="Script" uid="uid://db72v3kab4thr" path="res://Scripts/Components/States/explore.gd" id="30_r5yb1"]
+[ext_resource type="Script" uid="uid://bilp07snpp3je" path="res://Scripts/Components/States/mate.gd" id="31_q7dcg"]
+[ext_resource type="Texture2D" uid="uid://dk5krvfo7sd56" path="res://Assets/Sprites/ArrowTest.png" id="32_85vdq"]
+
+[sub_resource type="Resource" id="Resource_4pmhr"]
+script = ExtResource("2_ans7j")
+vision_range = 1500.0
+action_range = 200.0
+metadata/_custom_type_script = "uid://cld53y2v7ce22"
+
+[sub_resource type="Resource" id="Resource_gtpi0"]
+script = ExtResource("3_6tj2h")
+diet = Array[String](["Fruit"])
+hunger = 100
+hunger_decay = 0.01
+hunger_threshold = 0.5
+thrist = 100
+thrist_decay = 0.01
+thrist_threshold = 0.5
+metadata/_custom_type_script = "uid://bnegr4jaj148f"
+
+[sub_resource type="Resource" id="Resource_pcbn4"]
+script = ExtResource("4_6ikya")
+inital_growth = 1.0
+growth_speed = 0.0001
+metadata/_custom_type_script = "uid://cggoonwmx4efq"
+
+[sub_resource type="Resource" id="Resource_meode"]
+script = ExtResource("5_e7dbh")
+health = 5
+metadata/_custom_type_script = "uid://17vk0qsshlcu"
+
+[sub_resource type="Resource" id="Resource_suceo"]
+script = ExtResource("6_e2clh")
+reproduction_cooldown = 0.0
+gender = 0
+attractiveness = 100.0
+sex_drive = 100.0
+offspring_count = 1
+gestation_period = 120.0
+metadata/_custom_type_script = "uid://bdsmn6e6mhnl7"
+
+[sub_resource type="Resource" id="Resource_wsopt"]
+script = ExtResource("7_gl27i")
+speed = 200
+friction = 0.1
+acceleration = 0.1
+metadata/_custom_type_script = "uid://btt00psp2ndbv"
+
+[sub_resource type="Resource" id="Resource_f7v0p"]
+script = ExtResource("8_k182d")
+health_stats = SubResource("Resource_meode")
+action_stats = SubResource("Resource_4pmhr")
+mating_stats = SubResource("Resource_suceo")
+growth_stats = SubResource("Resource_pcbn4")
+diet_stats = SubResource("Resource_gtpi0")
+movement_stats = SubResource("Resource_wsopt")
+character_color = Color(1, 1, 1, 1)
+metadata/_custom_type_script = "uid://d2ymegg2fohlx"
+
+[sub_resource type="Animation" id="Animation_ncieb"]
+resource_name = "Eat"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualComponent/Body:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(5.48363e-06, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualComponent/Body:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(30, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VisualComponent/Body:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VisualComponent/Body:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.35, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VisualComponent/Attena_Lashes/FemaleAttena:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VisualComponent/Attena_Lashes/FemaleAttena:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-25, -0.25, 0, 0.25, 0, -44, -0.25, 0, 0.25, 0, -25, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VisualComponent/Attena_Lashes/FemaleAttena:scale:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.65, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VisualComponent/Attena_Lashes/FemaleAttena:scale:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.35, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("VisualComponent/Blush/PregnantBlush:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.65, 0.905), Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("VisualComponent/Blush/PregnantBlush:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 7.5), Vector2(0, -1.45), Vector2(0, 7.5)]
+}
+
+[sub_resource type="Animation" id="Animation_gedrr"]
+resource_name = "Idle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualComponent/Body:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.406126, 0.267944),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.11429, 0.85)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualComponent/Body:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(5.48363e-06, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VisualComponent/Body:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(30, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VisualComponent:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VisualComponent:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VisualComponent/Attena_Lashes/FemaleAttena:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VisualComponent/Attena_Lashes/FemaleAttena:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-25, -0.25, 0, 0.25, 0, -18, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_gxxdi"]
+resource_name = "Popup"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualComponent:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.225, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualComponent/Body:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 5.48363e-06, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VisualComponent/Body:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(30, -0.25, 0, 0.25, 0, 30, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VisualComponent/Body:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VisualComponent/Body:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VisualComponent/Blush/PregnantBlush:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 7.5), Vector2(0, 7.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VisualComponent/Blush/PregnantBlush:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v65uf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualComponent:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualComponent/Body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VisualComponent/Body:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(5.48363e-06, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VisualComponent/Body:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VisualComponent/Body:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VisualComponent/Body:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VisualComponent:scale:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VisualComponent:scale:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("VisualComponent/Attena_Lashes/FemaleAttena:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("VisualComponent/Attena_Lashes/FemaleAttena:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-25, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("VisualComponent/Attena_Lashes/FemaleAttena:scale:x")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.65, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("VisualComponent/Attena_Lashes/FemaleAttena:scale:y")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.35, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("VisualComponent/Blush/PregnantBlush:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 7.49)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("VisualComponent/Blush/PregnantBlush:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ihfhn"]
+resource_name = "Wander"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualComponent/Body:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(5.48363e-06, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualComponent/Body:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(30, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VisualComponent/Body:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VisualComponent/Body:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VisualComponent:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VisualComponent:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VisualComponent/Attena_Lashes/FemaleAttena:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VisualComponent/Attena_Lashes/FemaleAttena:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-25, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("VisualComponent/Attena_Lashes/FemaleAttena:scale:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("VisualComponent/Attena_Lashes/FemaleAttena:scale:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.85, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("VisualComponent/Blush/PregnantBlush:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 7.49), Vector2(0, 14.25)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("VisualComponent/Blush/PregnantBlush:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ihfhn"]
+_data = {
+&"Eat": SubResource("Animation_ncieb"),
+&"Idle": SubResource("Animation_gedrr"),
+&"Popup": SubResource("Animation_gxxdi"),
+&"RESET": SubResource("Animation_v65uf"),
+&"Wander": SubResource("Animation_ihfhn")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_meode"]
+radius = 13.0
+height = 50.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gxxdi"]
+resource_local_to_scene = true
+shader = ExtResource("10_a8rme")
+shader_parameter/shade_one = Color(0.803922, 0.376471, 0.576471, 1)
+shader_parameter/new_one = Color(0.803922, 0.376471, 0.576471, 1)
+shader_parameter/shade_two = Color(1, 0.682353, 0.713726, 1)
+shader_parameter/new_two = Color(1, 0.682353, 0.713726, 1)
+shader_parameter/shade_three = Color(0.556863, 0.278431, 0.54902, 1)
+shader_parameter/new_three = Color(0.556863, 0.278431, 0.54902, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_meode"]
+radius = 5.0
+
+[node name="Slime" type="CharacterBody2D" groups=["Slime"]]
+y_sort_enabled = true
+collision_layer = 0
+collision_mask = 2
+motion_mode = 1
+platform_on_leave = 2
+platform_floor_layers = 4294967040
+script = ExtResource("1_6500x")
+stat_sheet = SubResource("Resource_f7v0p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ihfhn")
+}
+autoplay = "Popup"
+
+[node name="CollisionComponent" type="CollisionShape2D" parent="."]
+position = Vector2(0, 17)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_meode")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="VisualComponent" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("9_0gfj5")
+cosmetics = {
+"FAttena": NodePath("Attena_Lashes/FemaleAttena"),
+"PBlush": NodePath("Blush/PregnantBlush")
+}
+
+[node name="Body" type="Sprite2D" parent="VisualComponent"]
+unique_name_in_owner = true
+texture_filter = 1
+material = SubResource("ShaderMaterial_gxxdi")
+position = Vector2(5.48363e-06, 0)
+texture = ExtResource("11_qeo2f")
+offset = Vector2(0, -30.005)
+region_enabled = true
+region_rect = Rect2(120, 15, 70, 60)
+
+[node name="Attena_Lashes" type="Node2D" parent="VisualComponent"]
+
+[node name="FemaleAttena" type="Sprite2D" parent="VisualComponent/Attena_Lashes"]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_gxxdi")
+position = Vector2(0, -25)
+scale = Vector2(0.65, 1.35)
+texture = ExtResource("11_qeo2f")
+region_enabled = true
+region_rect = Rect2(195, 20, 60, 20)
+
+[node name="Blush" type="Node2D" parent="VisualComponent"]
+
+[node name="PregnantBlush" type="Sprite2D" parent="VisualComponent/Blush"]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_gxxdi")
+position = Vector2(0, 7.49)
+texture = ExtResource("11_qeo2f")
+region_enabled = true
+region_rect = Rect2(200, 45, 50, 5)
+
+[node name="PathfindingComponent" parent="." instance=ExtResource("12_1hmw2")]
+
+[node name="ProductRays" parent="PathfindingComponent" instance=ExtResource("13_1kipn")]
+unique_name_in_owner = true
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("hunger_component") instance=ExtResource("14_dqski")]
+hunger_component = NodePath("../HungerComponent")
+
+[node name="HungerComponent" parent="." node_paths=PackedStringArray("action_component", "health_component", "hungry_state") instance=ExtResource("15_aeoyh")]
+action_component = NodePath("../ActionComponet")
+health_component = NodePath("../HealthComponent")
+hungry_state = NodePath("../State Machine/Goto")
+
+[node name="ThristComponent" parent="." node_paths=PackedStringArray("action_component") instance=ExtResource("16_6kyhw")]
+action_component = NodePath("../ActionComponet")
+enabled = true
+
+[node name="GrowthComponent" parent="." instance=ExtResource("17_kl2jd")]
+
+[node name="MatingComponent" parent="." node_paths=PackedStringArray("hunger_component", "thrist_component", "growth_component", "action_component") instance=ExtResource("18_b8xgk")]
+hunger_component = NodePath("../HungerComponent")
+thrist_component = NodePath("../ThristComponent")
+growth_component = NodePath("../GrowthComponent")
+action_component = NodePath("../ActionComponet")
+
+[node name="ActionComponet" parent="." node_paths=PackedStringArray("vision_component", "action_component", "mating_component", "growth_component") instance=ExtResource("19_mg2af")]
+script = ExtResource("20_qu4v5")
+states = {
+"drink": NodePath("../State Machine/Drinking"),
+"eat": NodePath("../State Machine/Eating"),
+"explore": NodePath("../State Machine/Explore"),
+"goto": NodePath("../State Machine/Goto"),
+"idle": NodePath("../State Machine/Idle"),
+"mate": NodePath("../State Machine/Mate"),
+"wander": NodePath("../State Machine/Wander")
+}
+vision_component = NodePath("../VisionComponent")
+action_component = NodePath(".")
+mating_component = NodePath("../MatingComponent")
+growth_component = NodePath("../GrowthComponent")
+searchable_items = 24
+
+[node name="VisionComponent" parent="." node_paths=PackedStringArray("growth_component") instance=ExtResource("21_6dna0")]
+growth_component = NodePath("../GrowthComponent")
+searchable_items = 25
+
+[node name="AnimationHandler" parent="." node_paths=PackedStringArray("state_machine", "animation_player") instance=ExtResource("22_1wx4u")]
+state_machine = NodePath("../State Machine")
+animation_player = NodePath("../AnimationPlayer")
+animtaion_dicts = {
+"Drink": "Eat",
+"Eat": "Eat",
+"Explore": "Wander",
+"Goto": "Wander",
+"Idle": "Idle",
+"Wander": "Wander"
+}
+
+[node name="InfoComponent" type="TextureButton" parent="."]
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 1
+script = ExtResource("23_dqh3y")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("24_21q06")
+initial_state = NodePath("Wander")
+
+[node name="Idle" type="Node" parent="State Machine"]
+unique_name_in_owner = true
+script = ExtResource("25_i3rdm")
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="Wander" type="Node" parent="State Machine" node_paths=PackedStringArray("pathfinding_component", "growth_component")]
+script = ExtResource("26_pp5vf")
+pathfinding_component = NodePath("../../PathfindingComponent")
+growth_component = NodePath("../../GrowthComponent")
+wander_radius = 1000.0
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="wander_timer" type="Timer" parent="State Machine/Wander"]
+
+[node name="fallback_timer" type="Timer" parent="State Machine/Wander"]
+wait_time = 5.0
+
+[node name="Goto" type="Node" parent="State Machine" node_paths=PackedStringArray("pathfinding_component", "growth_component")]
+script = ExtResource("27_u51rs")
+pathfinding_component = NodePath("../../PathfindingComponent")
+growth_component = NodePath("../../GrowthComponent")
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="Eating" type="Node" parent="State Machine" node_paths=PackedStringArray("action_component", "hunger_component")]
+script = ExtResource("28_oafpq")
+action_component = NodePath("../../ActionComponet")
+hunger_component = NodePath("../../HungerComponent")
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="Drinking" type="Node" parent="State Machine" node_paths=PackedStringArray("action_component", "thrist_component")]
+script = ExtResource("29_1heri")
+action_component = NodePath("../../ActionComponet")
+thrist_component = NodePath("../../ThristComponent")
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="Explore" type="Node" parent="State Machine" node_paths=PackedStringArray("growth_component")]
+script = ExtResource("30_r5yb1")
+growth_component = NodePath("../../GrowthComponent")
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="Explore Timer" type="Timer" parent="State Machine/Explore"]
+wait_time = 10.0
+autostart = true
+
+[node name="Mate" type="Node" parent="State Machine" node_paths=PackedStringArray("mating_component")]
+script = ExtResource("31_q7dcg")
+mating_component = NodePath("../../MatingComponent")
+metadata/_custom_type_script = "uid://d037sd1151ck3"
+
+[node name="ExploreRay" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0, 1, 0, 0.196078)
+shape = SubResource("CircleShape2D_meode")
+target_position = Vector2(0, 0)
+collision_mask = 18
+
+[node name="ArrowTest" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(0, -50)
+texture = ExtResource("32_85vdq")
+
+[connection signal="action" from="ActionComponet" to="State Machine/Wander" method="disable_timer"]
+[connection signal="pressed" from="InfoComponent" to="InfoComponent" method="_on_pressed"]
+[connection signal="timeout" from="State Machine/Wander/wander_timer" to="State Machine/Wander" method="new_wander_position"]
+[connection signal="timeout" from="State Machine/Wander/fallback_timer" to="State Machine/Wander" method="new_wander_position" binds= [true]]
+[connection signal="Exited" from="State Machine/Eating" to="ActionComponet" method="clear_curr_action"]
+[connection signal="Exited" from="State Machine/Drinking" to="ActionComponet" method="clear_curr_action"]
+[connection signal="timeout" from="State Machine/Explore/Explore Timer" to="State Machine/Explore" method="random_direction"]
+[connection signal="Exited" from="State Machine/Mate" to="ActionComponet" method="clear_curr_action"]

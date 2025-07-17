@@ -62,38 +62,13 @@ func show_data(data : Array):
 	#Create lines on graph
 	for point in data:
 		if point.has("X") and point.has("Y"):
-			var x = (point["X"] / highest_x_data) * 793.0
-			var y = (point["Y"] / highest_y_data) * 535.0  # Flip sign if needed for proper direction
+			var x = (point["X"] - lowest_x_data / highest_x_data) * 793.0
+			var y = (point["Y"] - lowest_y_data / highest_y_data) * 535.0  # Flip sign if needed for proper direction
 			graph_line.add_point(Vector2(x, -y))
 	
 	#Create Labels
-	for node in y_lables.get_children(): node.queue_free()
-	
-	var new_label = Label.new()
-	new_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	new_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	new_label.label_settings = LabelSettings.new(); new_label.label_settings.font = preload("res://Assets/Fonts/Vaticanus-G3yVG.ttf")
-	new_label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	new_label.position.y -= 535.0
-	new_label.text = str(highest_y_data)
-	
-	y_lables.add_child(new_label)
-	
-	new_label = Label.new()
-	new_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	new_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	new_label.label_settings = LabelSettings.new(); new_label.label_settings.font = preload("res://Assets/Fonts/Vaticanus-G3yVG.ttf")
-	new_label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	new_label.text = str(0.0)
-	
-	y_lables.add_child(new_label)
-	
-	new_label = Label.new()
-	new_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	new_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	new_label.label_settings = LabelSettings.new(); new_label.label_settings.font = preload("res://Assets/Fonts/Vaticanus-G3yVG.ttf")
-	new_label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	new_label.position.y -= 535.0 / 2
-	new_label.text = str(roundi(highest_y_data / 2))
-	
-	y_lables.add_child(new_label)
+	%LabelOne.text = str(0.0)
+	%LabelOne2.text = str(highest_y_data)
+	%LabelOne3.text = str(highest_y_data / 2)
+	%LabelOne4.text = str(highest_y_data / 4)
+	%LabelOne5.text = str(highest_y_data * 0.75)

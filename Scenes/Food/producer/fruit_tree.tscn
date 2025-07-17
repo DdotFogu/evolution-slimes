@@ -75,10 +75,10 @@ unique_name_in_owner = true
 position = Vector2(0, 39)
 
 [node name="Spawn 1" type="Marker2D" parent="Spawns"]
-position = Vector2(18, -46)
+position = Vector2(12, -46)
 
 [node name="Spawn 2" type="Marker2D" parent="Spawns"]
-position = Vector2(-17, -44.5)
+position = Vector2(-12, -44.5)
 
 [node name="Spawn 3" type="Marker2D" parent="Spawns"]
-position = Vector2(0, -25)
+position = Vector2(0, -31)

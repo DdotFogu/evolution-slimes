@@ -29,7 +29,7 @@ func eat():
 			else: food_to_eat = avalible_food.pick_random()
 		food_to_eat.eat(owner)
 		
-		if hunger_component.remaining_hunger == body.stat_sheet.diet_stats.hunger: await get_tree().create_timer(0.1).timeout; Transitioned.emit(self, "Wander")
+		if hunger_component.remaining_hunger == body.stat_sheet.diet_stats.hunger: await get_tree().create_timer(2.5).timeout; Transitioned.emit(self, "Wander")
 		
 		hunger_component.ate()
 

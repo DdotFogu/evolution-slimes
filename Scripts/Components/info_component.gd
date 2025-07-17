@@ -41,4 +41,4 @@ func _ready() -> void:
 	})
 
 func _on_pressed() -> void:
-	Info.show_information(owner)
+	Global.current_camera.change_target(owner)

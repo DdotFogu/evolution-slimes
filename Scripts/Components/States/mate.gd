@@ -5,7 +5,7 @@ class_name mate
 @export var mating_component : mating_component
 
 @export_category("Scenes")
-@export var base_child_scene = preload("res://Scenes/Characters/Slimes/MaleSlime.tscn")
+@export var base_child_scene = preload("res://Scenes/Characters/Slimes/Slime.tscn")
 
 var partner : Node2D = null
 

@@ -10,7 +10,7 @@ func enter(): drink(); body.velocity = Vector2.ZERO
 func drink():
 	thrist_component.decay_thrist(-body.stat_sheet.diet_stats.thrist)
 	
-	if thrist_component.remaining_thrist == body.stat_sheet.diet_stats.thrist: await get_tree().create_timer(0.1).timeout; Transitioned.emit(self, "Wander")
+	if thrist_component.remaining_thrist == body.stat_sheet.diet_stats.thrist: await get_tree().create_timer(2.5).timeout; Transitioned.emit(self, "Wander")
 	
 	thrist_component.drank()
 

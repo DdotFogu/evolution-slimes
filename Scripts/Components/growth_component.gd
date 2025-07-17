@@ -13,7 +13,9 @@ var growth: float:
 	set(value):
 		_growth = clamp(value, 0.0, 1.0)
 
-func _ready() -> void: growth += growth_stats.inital_growth
+func _ready() -> void: 
+	print(growth_stats.inital_growth)
+	growth += growth_stats.inital_growth
 
 func increase_growth(amount : float = growth_stats.growth_speed):
 	if growth == 1.0: return

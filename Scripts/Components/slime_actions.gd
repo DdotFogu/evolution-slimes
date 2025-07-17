@@ -33,6 +33,7 @@ func mate_action():
 	
 	var candidates := []
 	# Gather all slimes within range
+	if !vision_component.sort_objects(["Slime"]).has("Slime"): await get_tree().create_timer(0.1).timeout; clear_curr_action(); get_state("wander").change_to_state(); return
 	for slime in vision_component.sort_objects(["Slime"])["Slime"]: if slime != owner: candidates.append(slime)
 	
 	var attractiveness_dict := []
@@ -40,7 +41,7 @@ func mate_action():
 	
 	# Filter out slimes and collect attractiveness data
 	for candidate : CharacterBody2D in candidates.duplicate():
-		if candidate == null: continue
+		if !candidate: continue
 		# if male then filter out
 		if candidate.stat_sheet.mating_stats.gender == 0: continue
 		# if slime is infetile then filter out

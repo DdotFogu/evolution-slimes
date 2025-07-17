@@ -182,7 +182,6 @@ func fps_toggle_pressed(toggled_on: bool) -> void:
 
 func on_menu_pressed() -> void:
 	get_tree().paused = false
-	Info.Info_animation.play("Close")
 	%MapManager.destory_world()
 	%Graphing.visible = false
 	ui_player.play("main")

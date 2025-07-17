@@ -56,7 +56,7 @@ func create_water_sources(amount : int):
 		Global.y_sort.get_node("Water Sources").add_child(source_instance)
 
 func create_slime_pop(amount: int, stat_sheet: StatSheet) -> void:
-	var slime_scene = preload("res://Scenes/Characters/Slimes/MaleSlime.tscn")
+	var slime_scene = preload("res://Scenes/Characters/Slimes/Slime.tscn")
 	
 	for i in range(amount):
 		var spawn_pos = Global.get_pos_in_tilemap(ground_tilemap)

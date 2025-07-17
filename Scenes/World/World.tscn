@@ -528,9 +528,6 @@ tile_set = SubResource("TileSet_5jr8x")
 
 [node name="Other" type="Node2D" parent="Ysort"]
 
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -1
-
 [node name="Menu" parent="." instance=ExtResource("6_hveh7")]
 unique_name_in_owner = true
 
